@@ -1,936 +1,3165 @@
 	.file	"numberGame.cc"
-# GNU C++ (Ubuntu/Linaro 4.7.2-2ubuntu1) version 4.7.2 (x86_64-linux-gnu)
-#	compiled by GNU C version 4.7.2, GMP version 5.0.2, MPFR version 3.1.0-p3, MPC version 0.9
-# GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed:  -imultiarch x86_64-linux-gnu -D_GNU_SOURCE numberGame.cc
-# -mtune=generic -march=x86-64 -O3 -fverbose-asm -fstack-protector
-# options enabled:  -fasynchronous-unwind-tables -fauto-inc-dec
-# -fbranch-count-reg -fcaller-saves -fcombine-stack-adjustments -fcommon
-# -fcompare-elim -fcprop-registers -fcrossjumping -fcse-follow-jumps
-# -fdebug-types-section -fdefer-pop -fdelete-null-pointer-checks
-# -fdevirtualize -fdwarf2-cfi-asm -fearly-inlining
-# -feliminate-unused-debug-types -fexceptions -fexpensive-optimizations
-# -fforward-propagate -ffunction-cse -fgcse -fgcse-after-reload -fgcse-lm
-# -fgnu-runtime -fguess-branch-probability -fident -fif-conversion
-# -fif-conversion2 -findirect-inlining -finline -finline-atomics
-# -finline-functions -finline-functions-called-once
-# -finline-small-functions -fipa-cp -fipa-cp-clone -fipa-profile
-# -fipa-pure-const -fipa-reference -fipa-sra -fira-share-save-slots
-# -fira-share-spill-slots -fivopts -fkeep-static-consts
-# -fleading-underscore -fmath-errno -fmerge-constants -fmerge-debug-strings
-# -fmove-loop-invariants -fomit-frame-pointer -foptimize-register-move
-# -foptimize-sibling-calls -foptimize-strlen -fpartial-inlining -fpeephole
-# -fpeephole2 -fpredictive-commoning -fprefetch-loop-arrays -free
-# -freg-struct-return -fregmove -freorder-blocks -freorder-functions
-# -frerun-cse-after-loop -fsched-critical-path-heuristic
-# -fsched-dep-count-heuristic -fsched-group-heuristic -fsched-interblock
-# -fsched-last-insn-heuristic -fsched-rank-heuristic -fsched-spec
-# -fsched-spec-insn-heuristic -fsched-stalled-insns-dep -fschedule-insns2
-# -fshow-column -fshrink-wrap -fsigned-zeros -fsplit-ivs-in-unroller
-# -fsplit-wide-types -fstack-protector -fstrict-aliasing -fstrict-overflow
-# -fstrict-volatile-bitfields -fthread-jumps -ftoplevel-reorder
-# -ftrapping-math -ftree-bit-ccp -ftree-builtin-call-dce -ftree-ccp
-# -ftree-ch -ftree-copy-prop -ftree-copyrename -ftree-cselim -ftree-dce
-# -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
-# -ftree-loop-distribute-patterns -ftree-loop-if-convert -ftree-loop-im
-# -ftree-loop-ivcanon -ftree-loop-optimize -ftree-parallelize-loops=
-# -ftree-partial-pre -ftree-phiprop -ftree-pre -ftree-pta -ftree-reassoc
-# -ftree-scev-cprop -ftree-sink -ftree-slp-vectorize -ftree-sra
-# -ftree-switch-conversion -ftree-tail-merge -ftree-ter
-# -ftree-vect-loop-version -ftree-vectorize -ftree-vrp -funit-at-a-time
-# -funswitch-loops -funwind-tables -fvect-cost-model -fverbose-asm
-# -fzero-initialized-in-bss -m128bit-long-double -m64 -m80387
-# -maccumulate-outgoing-args -malign-stringops -mfancy-math-387
-# -mfp-ret-in-387 -mglibc -mieee-fp -mmmx -mno-sse4 -mpush-args -mred-zone
-# -msse -msse2 -mtls-direct-seg-refs
-
+	.intel_syntax noprefix
+	.section	.text._ZnwmPv,"axG",@progbits,_ZnwmPv,comdat
+	.weak	_ZnwmPv
+	.type	_ZnwmPv, @function
+_ZnwmPv:
+.LFB169:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	QWORD PTR [rbp-16], rsi
+	mov	rax, QWORD PTR [rbp-16]
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE169:
+	.size	_ZnwmPv, .-_ZnwmPv
 	.text
-	.p2align 4,,15
 	.globl	_Z10mutateStepP7state_t
 	.type	_Z10mutateStepP7state_t, @function
 _Z10mutateStepP7state_t:
-.LFB785:
+.LFB744:
 	.cfi_startproc
-	movl	(%rdi), %eax	# game_1(D)->a, D.13707
-	movl	4(%rdi), %r8d	# game_1(D)->b, D.13708
-	movl	8(%rdi), %esi	# game_1(D)->c, D.13710
-	movl	12(%rdi), %edx	# game_1(D)->d, D.13712
-	movl	%eax, %r9d	# D.13707, tmp72
-	subl	%r8d, %r9d	# D.13708, tmp72
-	subl	%esi, %r8d	# D.13710, tmp75
-	subl	%edx, %esi	# D.13712, tmp78
-	movl	%r9d, %ecx	# tmp72, tmp73
-	subl	%eax, %edx	# D.13707, tmp81
-	sarl	$31, %ecx	#, tmp73
-	movl	%edx, %eax	# tmp81, tmp82
-	xorl	%ecx, %r9d	# tmp73, tmp74
-	sarl	$31, %eax	#, tmp82
-	movl	%r9d, (%rdi)	# tmp74, game_1(D)->a
-	subl	%ecx, (%rdi)	# tmp73, game_1(D)->a
-	movl	%r8d, %ecx	# tmp75, tmp76
-	sarl	$31, %ecx	#, tmp76
-	xorl	%eax, %edx	# tmp82, tmp83
-	xorl	%ecx, %r8d	# tmp76, tmp77
-	movl	%edx, 12(%rdi)	# tmp83, game_1(D)->d
-	subl	%eax, 12(%rdi)	# tmp82, game_1(D)->d
-	movl	%r8d, 4(%rdi)	# tmp77, game_1(D)->b
-	subl	%ecx, 4(%rdi)	# tmp76, game_1(D)->b
-	movl	%esi, %ecx	# tmp78, tmp79
-	sarl	$31, %ecx	#, tmp79
-	xorl	%ecx, %esi	# tmp79, tmp80
-	movl	%esi, 8(%rdi)	# tmp80, game_1(D)->c
-	subl	%ecx, 8(%rdi)	# tmp79, game_1(D)->c
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-24], rdi
+	mov	rax, QWORD PTR [rbp-24]
+	mov	edx, DWORD PTR [rax]
+	mov	rax, QWORD PTR [rbp-24]
+	mov	eax, DWORD PTR [rax+4]
+	sub	edx, eax
+	mov	eax, edx
+	sar	eax, 31
+	xor	edx, eax
+	mov	DWORD PTR [rbp-16], edx
+	sub	DWORD PTR [rbp-16], eax
+	mov	rax, QWORD PTR [rbp-24]
+	mov	edx, DWORD PTR [rax+4]
+	mov	rax, QWORD PTR [rbp-24]
+	mov	eax, DWORD PTR [rax+8]
+	sub	edx, eax
+	mov	eax, edx
+	sar	eax, 31
+	xor	edx, eax
+	mov	DWORD PTR [rbp-12], edx
+	sub	DWORD PTR [rbp-12], eax
+	mov	rax, QWORD PTR [rbp-24]
+	mov	edx, DWORD PTR [rax+8]
+	mov	rax, QWORD PTR [rbp-24]
+	mov	eax, DWORD PTR [rax+12]
+	sub	edx, eax
+	mov	eax, edx
+	sar	eax, 31
+	xor	edx, eax
+	mov	DWORD PTR [rbp-8], edx
+	sub	DWORD PTR [rbp-8], eax
+	mov	rax, QWORD PTR [rbp-24]
+	mov	edx, DWORD PTR [rax+12]
+	mov	rax, QWORD PTR [rbp-24]
+	mov	eax, DWORD PTR [rax]
+	sub	edx, eax
+	mov	eax, edx
+	sar	eax, 31
+	xor	edx, eax
+	mov	DWORD PTR [rbp-4], edx
+	sub	DWORD PTR [rbp-4], eax
+	mov	rax, QWORD PTR [rbp-24]
+	mov	edx, DWORD PTR [rbp-16]
+	mov	DWORD PTR [rax], edx
+	mov	rax, QWORD PTR [rbp-24]
+	mov	edx, DWORD PTR [rbp-12]
+	mov	DWORD PTR [rax+4], edx
+	mov	rax, QWORD PTR [rbp-24]
+	mov	edx, DWORD PTR [rbp-8]
+	mov	DWORD PTR [rax+8], edx
+	mov	rax, QWORD PTR [rbp-24]
+	mov	edx, DWORD PTR [rbp-4]
+	mov	DWORD PTR [rax+12], edx
+	nop
+	pop	rbp
+	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
-.LFE785:
+.LFE744:
 	.size	_Z10mutateStepP7state_t, .-_Z10mutateStepP7state_t
-	.p2align 4,,15
+	.section	.text._Z15isTerminalStateP7state_t,"axG",@progbits,_Z15isTerminalStateP7state_t,comdat
+	.weak	_Z15isTerminalStateP7state_t
+	.type	_Z15isTerminalStateP7state_t, @function
+_Z15isTerminalStateP7state_t:
+.LFB745:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	eax, DWORD PTR [rax]
+	test	eax, eax
+	je	.L6
+	mov	eax, 0
+	jmp	.L7
+.L6:
+	mov	rax, QWORD PTR [rbp-8]
+	mov	eax, DWORD PTR [rax+4]
+	test	eax, eax
+	je	.L8
+	mov	eax, 0
+	jmp	.L7
+.L8:
+	mov	rax, QWORD PTR [rbp-8]
+	mov	eax, DWORD PTR [rax+8]
+	test	eax, eax
+	je	.L9
+	mov	eax, 0
+	jmp	.L7
+.L9:
+	mov	rax, QWORD PTR [rbp-8]
+	mov	eax, DWORD PTR [rax+12]
+	test	eax, eax
+	je	.L10
+	mov	eax, 0
+	jmp	.L7
+.L10:
+	mov	eax, 1
+.L7:
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE745:
+	.size	_Z15isTerminalStateP7state_t, .-_Z15isTerminalStateP7state_t
+	.text
 	.globl	_Z10pathLengthP7state_t
 	.type	_Z10pathLengthP7state_t, @function
 _Z10pathLengthP7state_t:
-.LFB787:
+.LFB746:
 	.cfi_startproc
-	movl	4(%rdi), %edx	# game_3(D)->b, x
-	movl	8(%rdi), %ecx	# game_3(D)->c, y
-	xorl	%eax, %eax	# count
-	movl	12(%rdi), %esi	# game_3(D)->d, z
-	movl	(%rdi), %r9d	# game_3(D)->a, w
-	.p2align 4,,10
-	.p2align 3
-.L4:
-	testl	%r9d, %r9d	# w
-	jne	.L3	#,
-	testl	%edx, %edx	# x
-	jne	.L3	#,
-	testl	%ecx, %ecx	# y
-	jne	.L3	#,
-	testl	%esi, %esi	# z
-	.p2align 4,,5
-	jne	.L3	#,
-	.p2align 4,,7
-	rep
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 32
+	mov	QWORD PTR [rbp-24], rdi
+	mov	DWORD PTR [rbp-4], 0
+	jmp	.L12
+.L13:
+	mov	rax, QWORD PTR [rbp-24]
+	mov	rdi, rax
+	call	_Z10mutateStepP7state_t
+	add	DWORD PTR [rbp-4], 1
+.L12:
+	mov	rax, QWORD PTR [rbp-24]
+	mov	rdi, rax
+	call	_Z15isTerminalStateP7state_t
+	xor	eax, 1
+	test	al, al
+	jne	.L13
+	mov	eax, DWORD PTR [rbp-4]
+	leave
+	.cfi_def_cfa 7, 8
 	ret
-	.p2align 4,,10
-	.p2align 3
-.L3:
-	movl	%r9d, %r8d	# w, D.13744
-	addl	$1, %eax	#, count
-	subl	%edx, %r8d	# x, D.13744
-	subl	%ecx, %edx	# y, D.13742
-	subl	%esi, %ecx	# z, D.13740
-	movl	%r8d, %r10d	# D.13744, tmp78
-	subl	%r9d, %esi	# w, D.13739
-	sarl	$31, %r10d	#, tmp78
-	movl	%esi, %r9d	# D.13739, tmp81
-	xorl	%r10d, %r8d	# tmp78, w
-	sarl	$31, %r9d	#, tmp81
-	subl	%r10d, %r8d	# tmp78, w
-	movl	%edx, %r10d	# D.13742, tmp79
-	xorl	%r9d, %esi	# tmp81, z
-	sarl	$31, %r10d	#, tmp79
-	subl	%r9d, %esi	# tmp81, z
-	movl	%r8d, (%rdi)	# w, game_3(D)->a
-	xorl	%r10d, %edx	# tmp79, x
-	movl	%esi, 12(%rdi)	# z, game_3(D)->d
-	movl	%r8d, %r9d	# w, w
-	subl	%r10d, %edx	# tmp79, x
-	movl	%ecx, %r10d	# D.13740, tmp80
-	sarl	$31, %r10d	#, tmp80
-	movl	%edx, 4(%rdi)	# x, game_3(D)->b
-	xorl	%r10d, %ecx	# tmp80, y
-	subl	%r10d, %ecx	# tmp80, y
-	movl	%ecx, 8(%rdi)	# y, game_3(D)->c
-	jmp	.L4	#
 	.cfi_endproc
-.LFE787:
+.LFE746:
 	.size	_Z10pathLengthP7state_t, .-_Z10pathLengthP7state_t
-	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E,comdat
+	.section	.text._ZNSt3mapIilSt4lessIiESaISt4pairIKilEEED2Ev,"axG",@progbits,_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEED5Ev,comdat
 	.align 2
-	.p2align 4,,15
-	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E
-	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E, @function
-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E:
-.LFB821:
+	.weak	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEED2Ev
+	.type	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEED2Ev, @function
+_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEED2Ev:
+.LFB749:
 	.cfi_startproc
-	pushq	%r15	#
+	push	rbp
 	.cfi_def_cfa_offset 16
-	.cfi_offset 15, -16
-	pushq	%r14	#
-	.cfi_def_cfa_offset 24
-	.cfi_offset 14, -24
-	movq	%rsi, %r14	# __x, __x
-	pushq	%r13	#
-	.cfi_def_cfa_offset 32
-	.cfi_offset 13, -32
-	pushq	%r12	#
-	.cfi_def_cfa_offset 40
-	.cfi_offset 12, -40
-	pushq	%rbp	#
-	.cfi_def_cfa_offset 48
-	.cfi_offset 6, -48
-	movq	%rdi, %rbp	# this, this
-	pushq	%rbx	#
-	.cfi_def_cfa_offset 56
-	.cfi_offset 3, -56
-	subq	$56, %rsp	#,
-	.cfi_def_cfa_offset 112
-	testq	%rsi, %rsi	# __x
-	je	.L7	#,
-.L42:
-	movq	24(%r14), %rax	# MEM[(struct _Rb_tree_node_base *)__x_66 + 24B],
-	testq	%rax, %rax	#
-	movq	%rax, 8(%rsp)	#, %sfp
-	je	.L14	#,
-.L46:
-	movq	24(%rax), %rax	# MEM[(struct _Rb_tree_node_base *)__x_61 + 24B],
-	testq	%rax, %rax	#
-	movq	%rax, 16(%rsp)	#, %sfp
-	je	.L17	#,
-.L47:
-	movq	24(%rax), %rax	# MEM[(struct _Rb_tree_node_base *)__x_72 + 24B],
-	testq	%rax, %rax	#
-	movq	%rax, 24(%rsp)	#, %sfp
-	je	.L20	#,
-.L48:
-	movq	24(%rax), %rax	# MEM[(struct _Rb_tree_node_base *)__x_77 + 24B],
-	testq	%rax, %rax	#
-	movq	%rax, 32(%rsp)	#, %sfp
-	je	.L23	#,
-.L49:
-	movq	24(%rax), %rax	# MEM[(struct _Rb_tree_node_base *)__x_82 + 24B],
-	testq	%rax, %rax	#
-	movq	%rax, 40(%rsp)	#, %sfp
-	je	.L26	#,
-.L50:
-	movq	24(%rax), %r13	# MEM[(struct _Rb_tree_node_base *)__x_87 + 24B], __x
-	testq	%r13, %r13	# __x
-	je	.L29	#,
-.L51:
-	movq	24(%r13), %r12	# MEM[(struct _Rb_tree_node_base *)__x_92 + 24B], __x
-	testq	%r12, %r12	# __x
-	je	.L32	#,
-	.p2align 4,,10
-	.p2align 3
-.L52:
-	movq	24(%r12), %r15	# MEM[(struct _Rb_tree_node_base *)__x_97 + 24B], __x
-	testq	%r15, %r15	# __x
-	je	.L34	#,
-	.p2align 4,,10
-	.p2align 3
-.L43:
-	movq	24(%r15), %rsi	# MEM[(struct _Rb_tree_node_base *)__x_102 + 24B], MEM[(struct _Rb_tree_node_base *)__x_102 + 24B]
-	movq	%rbp, %rdi	# this,
-	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E	#
-	movq	16(%r15), %rbx	# MEM[(struct _Rb_tree_node_base *)__x_102 + 16B], __x
-	movq	%r15, %rdi	# __x,
-	call	_ZdlPv	#
-	testq	%rbx, %rbx	# __x
-	movq	%rbx, %r15	# __x, __x
-	jne	.L43	#,
-.L34:
-	movq	16(%r12), %rbx	# MEM[(struct _Rb_tree_node_base *)__x_97 + 16B], __x
-	movq	%r12, %rdi	# __x,
-	call	_ZdlPv	#
-	testq	%rbx, %rbx	# __x
-	je	.L32	#,
-	movq	%rbx, %r12	# __x, __x
-	jmp	.L52	#
-.L32:
-	movq	16(%r13), %rbx	# MEM[(struct _Rb_tree_node_base *)__x_92 + 16B], __x
-	movq	%r13, %rdi	# __x,
-	call	_ZdlPv	#
-	testq	%rbx, %rbx	# __x
-	je	.L54	#,
-	movq	%rbx, %r13	# __x, __x
-	jmp	.L51	#
-.L54:
-	movq	40(%rsp), %rax	# %sfp,
-.L29:
-	movq	16(%rax), %rbx	# MEM[(struct _Rb_tree_node_base *)__x_87 + 16B], __x
-	movq	%rax, %rdi	#,
-	call	_ZdlPv	#
-	testq	%rbx, %rbx	# __x
-	je	.L26	#,
-	movq	%rbx, 40(%rsp)	# __x, %sfp
-	movq	%rbx, %rax	# __x,
-	jmp	.L50	#
-.L26:
-	movq	32(%rsp), %rax	# %sfp,
-	movq	16(%rax), %rbx	# MEM[(struct _Rb_tree_node_base *)__x_82 + 16B], __x
-	movq	%rax, %rdi	#,
-	call	_ZdlPv	#
-	testq	%rbx, %rbx	# __x
-	je	.L23	#,
-	movq	%rbx, 32(%rsp)	# __x, %sfp
-	movq	%rbx, %rax	# __x,
-	jmp	.L49	#
-.L23:
-	movq	24(%rsp), %rax	# %sfp,
-	movq	16(%rax), %rbx	# MEM[(struct _Rb_tree_node_base *)__x_77 + 16B], __x
-	movq	%rax, %rdi	#,
-	call	_ZdlPv	#
-	testq	%rbx, %rbx	# __x
-	je	.L20	#,
-	movq	%rbx, 24(%rsp)	# __x, %sfp
-	movq	%rbx, %rax	# __x,
-	jmp	.L48	#
-.L20:
-	movq	16(%rsp), %rax	# %sfp,
-	movq	16(%rax), %rbx	# MEM[(struct _Rb_tree_node_base *)__x_72 + 16B], __x
-	movq	%rax, %rdi	#,
-	call	_ZdlPv	#
-	testq	%rbx, %rbx	# __x
-	je	.L17	#,
-	movq	%rbx, 16(%rsp)	# __x, %sfp
-	movq	%rbx, %rax	# __x,
-	jmp	.L47	#
-.L17:
-	movq	8(%rsp), %rax	# %sfp,
-	movq	16(%rax), %rbx	# MEM[(struct _Rb_tree_node_base *)__x_61 + 16B], __x
-	movq	%rax, %rdi	#,
-	call	_ZdlPv	#
-	testq	%rbx, %rbx	# __x
-	je	.L14	#,
-	movq	%rbx, 8(%rsp)	# __x, %sfp
-	movq	%rbx, %rax	# __x,
-	jmp	.L46	#
-.L14:
-	movq	16(%r14), %rbx	# MEM[(struct _Rb_tree_node_base *)__x_66 + 16B], __y
-	movq	%r14, %rdi	# __x,
-	call	_ZdlPv	#
-	testq	%rbx, %rbx	# __x
-	movq	%rbx, %r14	# __y, __x
-	jne	.L42	#,
-.L7:
-	addq	$56, %rsp	#,
-	.cfi_def_cfa_offset 56
-	popq	%rbx	#
-	.cfi_def_cfa_offset 48
-	popq	%rbp	#
-	.cfi_def_cfa_offset 40
-	popq	%r12	#
-	.cfi_def_cfa_offset 32
-	popq	%r13	#
-	.cfi_def_cfa_offset 24
-	popq	%r14	#
-	.cfi_def_cfa_offset 16
-	popq	%r15	#
-	.cfi_def_cfa_offset 8
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 16
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EED1Ev
+	leave
+	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
-.LFE821:
-	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E
-	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE16_M_insert_uniqueERKS2_,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE16_M_insert_uniqueERKS2_,comdat
-	.align 2
-	.p2align 4,,15
-	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE16_M_insert_uniqueERKS2_
-	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE16_M_insert_uniqueERKS2_, @function
-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE16_M_insert_uniqueERKS2_:
-.LFB871:
-	.cfi_startproc
-	pushq	%r15	#
-	.cfi_def_cfa_offset 16
-	.cfi_offset 15, -16
-	pushq	%r14	#
-	.cfi_def_cfa_offset 24
-	.cfi_offset 14, -24
-	movq	%rsi, %r14	# __v, __v
-	pushq	%r13	#
-	.cfi_def_cfa_offset 32
-	.cfi_offset 13, -32
-	pushq	%r12	#
-	.cfi_def_cfa_offset 40
-	.cfi_offset 12, -40
-	leaq	8(%rdi), %r12	#, __y
-	pushq	%rbp	#
-	.cfi_def_cfa_offset 48
-	.cfi_offset 6, -48
-	movq	%rdi, %rbp	# this, this
-	pushq	%rbx	#
-	.cfi_def_cfa_offset 56
-	.cfi_offset 3, -56
-	subq	$40, %rsp	#,
-	.cfi_def_cfa_offset 96
-	movq	16(%rdi), %rdx	# MEM[(struct _Rb_tree *)this_5(D) + 16B], __x
-	testq	%rdx, %rdx	# __x
-	je	.L56	#,
-	movl	(%rsi), %ebx	# MEM[(const int &)__v_14(D)], prephitmp.181
-	jmp	.L59	#
-	.p2align 4,,10
-	.p2align 3
-.L86:
-	movq	16(%rdx), %rax	# MEM[(struct _Rb_tree_node_base *)__x_159 + 16B], __x
-	movl	$1, %r9d	#, __comp
-	testq	%rax, %rax	# __x
-	je	.L85	#,
-.L68:
-	movq	%rax, %rdx	# __x, __x
-.L59:
-	movl	32(%rdx), %r8d	# MEM[(const int &)__x_159 + 32], prephitmp.181
-	cmpl	%r8d, %ebx	# prephitmp.181, prephitmp.181
-	jl	.L86	#,
-	movq	24(%rdx), %rax	# MEM[(struct _Rb_tree_node_base *)__x_159 + 24B], __x
-	xorl	%r9d, %r9d	# __comp
-	testq	%rax, %rax	# __x
-	jne	.L68	#,
-.L85:
-	testb	%r9b, %r9b	# __comp
-	movq	%rdx, %r13	# __x, __y
-	movq	%rdx, %rax	# __y, __j$_M_node
-	jne	.L87	#,
-	cmpl	%r8d, %ebx	# prephitmp.181, prephitmp.181
-	jg	.L88	#,
-.L65:
-	movq	%rax, 16(%rsp)	# __j$_M_node, D.13611.first._M_node
-	movb	$0, 24(%rsp)	#, MEM[(struct pair *)&D.13611 + 8B]
-.L64:
-	movq	16(%rsp), %rax	# D.13611, D.13611
-	movl	24(%rsp), %edx	# D.13611, D.13611
-	addq	$40, %rsp	#,
-	.cfi_remember_state
-	.cfi_def_cfa_offset 56
-	popq	%rbx	#
-	.cfi_def_cfa_offset 48
-	popq	%rbp	#
-	.cfi_def_cfa_offset 40
-	popq	%r12	#
-	.cfi_def_cfa_offset 32
-	popq	%r13	#
-	.cfi_def_cfa_offset 24
-	popq	%r14	#
-	.cfi_def_cfa_offset 16
-	popq	%r15	#
-	.cfi_def_cfa_offset 8
-	ret
-	.p2align 4,,10
-	.p2align 3
-.L87:
-	.cfi_restore_state
-	cmpq	24(%rbp), %rdx	# MEM[(struct _Rb_tree *)this_5(D) + 24B], __y
-	je	.L89	#,
-.L61:
-	movq	%r13, %rdi	# __y,
-	call	_ZSt18_Rb_tree_decrementPSt18_Rb_tree_node_base	#
-	movl	32(%rax), %r8d	# MEM[(const int &)__j$_M_node_124 + 32], prephitmp.181
-	cmpl	%r8d, %ebx	# prephitmp.181, prephitmp.181
-	jle	.L65	#,
-.L88:
-	cmpq	%r12, %r13	# __y, __y
-	je	.L71	#,
-	xorl	%r15d, %r15d	# prephitmp.183
-	cmpl	%ebx, 32(%r13)	# prephitmp.181, MEM[(const int &)__y_129 + 32]
-	setg	%r15b	#, prephitmp.183
-	jmp	.L66	#
-.L89:
-	cmpq	%r12, %rdx	# __y, __y
-	je	.L71	#,
-	xorl	%r15d, %r15d	# prephitmp.183
-	cmpl	32(%rdx), %ebx	# MEM[(const int &)__y_97 + 32], prephitmp.181
-	setl	%r15b	#, prephitmp.183
-.L66:
-	movl	$48, %edi	#,
-	call	_Znwm	#
-	cmpq	$-32, %rax	#, __z
-	movq	%rax, %rbx	#, __z
-	je	.L67	#,
-	movq	(%r14), %rax	# *__v_14(D), *__v_14(D)
-	movq	%rax, 32(%rbx)	# *__v_14(D),
-	movq	8(%r14), %rax	# *__v_14(D), *__v_14(D)
-	movq	%rax, 40(%rbx)	# *__v_14(D),
-.L67:
-	movq	%r12, %rcx	# __y,
-	movq	%r13, %rdx	# __y,
-	movq	%rbx, %rsi	# __z,
-	movl	%r15d, %edi	# prephitmp.183,
-	call	_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_	#
-	addq	$1, 40(%rbp)	#, this_5(D)->_M_impl._M_node_count
-	movq	%rbx, 16(%rsp)	# __z, D.13611.first._M_node
-	movb	$1, 24(%rsp)	#, MEM[(struct pair *)&D.13611 + 8B]
-	jmp	.L64	#
-.L71:
-	movl	$1, %r15d	#, prephitmp.183
-	jmp	.L66	#
-.L56:
-	cmpq	24(%rdi), %r12	# MEM[(struct _Rb_tree *)this_5(D) + 24B], __y
-	movq	%r12, %r13	# __y, __y
-	je	.L71	#,
-	movl	(%rsi), %ebx	# MEM[(const int &)__v_14(D)], prephitmp.181
-	jmp	.L61	#
-	.cfi_endproc
-.LFE871:
-	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE16_M_insert_uniqueERKS2_, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE16_M_insert_uniqueERKS2_
-	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE17_M_insert_unique_ESt23_Rb_tree_const_iteratorIS2_ERKS2_,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE17_M_insert_unique_ESt23_Rb_tree_const_iteratorIS2_ERKS2_,comdat
-	.align 2
-	.p2align 4,,15
-	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE17_M_insert_unique_ESt23_Rb_tree_const_iteratorIS2_ERKS2_
-	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE17_M_insert_unique_ESt23_Rb_tree_const_iteratorIS2_ERKS2_, @function
-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE17_M_insert_unique_ESt23_Rb_tree_const_iteratorIS2_ERKS2_:
-.LFB854:
-	.cfi_startproc
-	movq	%r13, -24(%rsp)	#,
-	.cfi_offset 13, -32
-	leaq	8(%rdi), %r13	#, D.14422
-	movq	%rbx, -48(%rsp)	#,
-	movq	%rbp, -40(%rsp)	#,
-	movq	%r12, -32(%rsp)	#,
-	.cfi_offset 3, -56
-	.cfi_offset 6, -48
-	.cfi_offset 12, -40
-	movq	%rdi, %rbp	# this, this
-	movq	%r14, -16(%rsp)	#,
-	movq	%r15, -8(%rsp)	#,
-	subq	$88, %rsp	#,
-	.cfi_def_cfa_offset 96
-	.cfi_offset 14, -24
-	.cfi_offset 15, -16
-	cmpq	%rsi, %r13	# __position, D.14422
-	movq	%rsi, %rbx	# __position, __position
-	movq	%rdx, %r12	# __v, __v
-	je	.L136	#,
-	movl	(%rdx), %r14d	# MEM[(const int &)__v_12(D)], D.14464
-	cmpl	32(%rsi), %r14d	# MEM[(const int &)__position$_M_node_170 + 32], D.14464
-	jge	.L95	#,
-	movq	24(%rdi), %r15	# MEM[(struct _Rb_tree_node_base * &)this_5(D) + 24], D.13449
-	cmpq	%rsi, %r15	# __position, D.13449
-	je	.L137	#,
-	movq	%rsi, %rdi	# __position,
-	call	_ZSt18_Rb_tree_decrementPKSt18_Rb_tree_node_base	#
-	cmpl	32(%rax), %r14d	# MEM[(const int &)D.14905_214 + 32], D.14464
-	movq	%rax, %r15	#, D.14905
-	jle	.L92	#,
-	cmpq	%rax, %r13	# D.14905, D.14422
-	sete	%r14b	#, D.15064
-	cmpq	$0, 24(%rax)	#, MEM[(const struct _Rb_tree_node_base *)D.14905_214 + 24B]
-	je	.L135	#,
-	movl	$48, %edi	#,
-	call	_Znwm	#
-	cmpq	$-32, %rax	#, __z
-	movq	%rax, %r14	#, __z
-	je	.L102	#,
-	movq	(%r12), %rax	# *__v_12(D), *__v_12(D)
-	movq	%rax, 32(%r14)	# *__v_12(D), MEM[(struct pair *)__z_242 + 32B]
-	movq	8(%r12), %rax	# *__v_12(D), *__v_12(D)
-	movq	%rax, 40(%r14)	# *__v_12(D), MEM[(struct pair *)__z_242 + 32B]
-.L102:
-	movq	%r13, %rcx	# D.14422,
-	movq	%rbx, %rdx	# __position,
-	movq	%r14, %rsi	# __z,
-	movl	$1, %edi	#,
-	call	_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_	#
-	addq	$1, 40(%rbp)	#, this_5(D)->_M_impl._M_node_count
-	movq	%r14, %rax	# __z, D.13439
-.L124:
-	movq	40(%rsp), %rbx	#,
-	movq	48(%rsp), %rbp	#,
-	movq	56(%rsp), %r12	#,
-	movq	64(%rsp), %r13	#,
-	movq	72(%rsp), %r14	#,
-	movq	80(%rsp), %r15	#,
-	addq	$88, %rsp	#,
-	.cfi_remember_state
-	.cfi_def_cfa_offset 8
-	ret
-	.p2align 4,,10
-	.p2align 3
-.L95:
-	.cfi_restore_state
-	movq	%rsi, %rax	# __position, D.13439
-	jle	.L124	#,
-	movq	32(%rdi), %r15	# MEM[(struct _Rb_tree_node_base * &)this_5(D) + 32], D.13475
-	cmpq	%rsi, %r15	# __position, D.13475
-	je	.L138	#,
-	movq	%rsi, %rdi	# __position,
-	call	_ZSt18_Rb_tree_incrementPKSt18_Rb_tree_node_base	#
-	cmpl	32(%rax), %r14d	# MEM[(const int &)D.15000_258 + 32], D.14464
-	movq	%rax, %r15	#, D.15000
-	jge	.L92	#,
-	cmpq	$0, 24(%rbx)	#, MEM[(const struct _Rb_tree_node_base *)__position$_M_node_170 + 24B]
-	movl	$48, %edi	#,
-	je	.L139	#,
-	call	_Znwm	#
-	cmpq	$-32, %rax	#, __z
-	movq	%rax, %rbx	#, __z
-	je	.L109	#,
-.L133:
-	movq	(%r12), %rax	# *__v_12(D), *__v_12(D)
-	movq	%rax, 32(%rbx)	# *__v_12(D),
-	movq	8(%r12), %rax	# *__v_12(D), *__v_12(D)
-	movq	%rax, 40(%rbx)	# *__v_12(D),
-.L109:
-	movq	%r13, %rcx	# D.14422,
-	movq	%r15, %rdx	# D.15000,
-	movq	%rbx, %rsi	# __z,
-	movl	$1, %edi	#,
-	call	_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_	#
-	addq	$1, 40(%rbp)	#, this_5(D)->_M_impl._M_node_count
-	movq	%rbx, %rax	# __z, D.13439
-	jmp	.L124	#
-	.p2align 4,,10
-	.p2align 3
-.L136:
-	cmpq	$0, 40(%rdi)	#, MEM[(const struct _Rb_tree *)this_5(D) + 40B]
-	je	.L92	#,
-	movq	32(%rdi), %r14	# MEM[(struct _Rb_tree_node_base * &)this_5(D) + 32], D.13432
-	movl	(%rdx), %eax	# MEM[(const int &)__v_12(D)],
-	cmpl	%eax, 32(%r14)	#, MEM[(const int &)D.13432_15 + 32]
-	jl	.L93	#,
-	.p2align 4,,10
-	.p2align 3
-.L92:
-	movq	%r12, %rsi	# __v,
-	movq	%rbp, %rdi	# this,
-	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE16_M_insert_uniqueERKS2_	#
-	movl	%edx, 8(%rsp)	# tmp153,
-	jmp	.L124	#
-	.p2align 4,,10
-	.p2align 3
-.L138:
-	cmpl	32(%r15), %r14d	# MEM[(const int &)D.13475_69 + 32], D.14464
-	setl	%r14b	#, D.15063
-.L135:
-	movl	$48, %edi	#,
-	call	_Znwm	#
-	cmpq	$-32, %rax	#, __z
-	movq	%rax, %rbx	#, __z
-	je	.L105	#,
-	movq	(%r12), %rax	# *__v_12(D), *__v_12(D)
-	movq	%rax, 32(%rbx)	# *__v_12(D),
-	movq	8(%r12), %rax	# *__v_12(D), *__v_12(D)
-	movq	%rax, 40(%rbx)	# *__v_12(D),
-.L105:
-	movzbl	%r14b, %edi	# D.15063, D.15063
-	movq	%r13, %rcx	# D.14422,
-	movq	%r15, %rdx	# D.13475,
-	movq	%rbx, %rsi	# __z,
-	call	_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_	#
-	addq	$1, 40(%rbp)	#, this_5(D)->_M_impl._M_node_count
-	movq	%rbx, %rax	# __z, D.13439
-	jmp	.L124	#
-	.p2align 4,,10
-	.p2align 3
-.L137:
-	movl	$48, %edi	#,
-	call	_Znwm	#
-	cmpq	$-32, %rax	#, __z
-	movq	%rax, %rbx	#, __z
-	jne	.L133	#,
-	jmp	.L109	#
-	.p2align 4,,10
-	.p2align 3
-.L93:
-	xorl	%r15d, %r15d	# tmp149
-	movl	$48, %edi	#,
-	cmpq	%r14, %r13	# D.13432, D.14422
-	sete	%r15b	#, tmp149
-	call	_Znwm	#
-	cmpq	$-32, %rax	#, __z
-	movq	%rax, %rbx	#, __z
-	je	.L111	#,
-	movq	(%r12), %rax	# *__v_12(D), *__v_12(D)
-	movq	%rax, 32(%rbx)	# *__v_12(D), MEM[(struct pair *)__z_198 + 32B]
-	movq	8(%r12), %rax	# *__v_12(D), *__v_12(D)
-	movq	%rax, 40(%rbx)	# *__v_12(D), MEM[(struct pair *)__z_198 + 32B]
-.L111:
-	movq	%r13, %rcx	# D.14422,
-	movq	%r14, %rdx	# D.13432,
-	movq	%rbx, %rsi	# __z,
-	movl	%r15d, %edi	# tmp149,
-	call	_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_	#
-	addq	$1, 40(%rbp)	#, this_5(D)->_M_impl._M_node_count
-	movq	%rbx, %rax	# __z, D.13439
-	jmp	.L124	#
-.L139:
-	call	_Znwm	#
-	cmpq	$-32, %rax	#, __z
-	movq	%rax, %r14	#, __z
-	je	.L108	#,
-	movq	(%r12), %rax	# *__v_12(D), *__v_12(D)
-	movq	%rax, 32(%r14)	# *__v_12(D), MEM[(struct pair *)__z_272 + 32B]
-	movq	8(%r12), %rax	# *__v_12(D), *__v_12(D)
-	movq	%rax, 40(%r14)	# *__v_12(D), MEM[(struct pair *)__z_272 + 32B]
-.L108:
-	movq	%r13, %rcx	# D.14422,
-	movq	%rbx, %rdx	# __position,
-	movq	%r14, %rsi	# __z,
-	xorl	%edi, %edi	#
-	call	_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_	#
-	addq	$1, 40(%rbp)	#, this_5(D)->_M_impl._M_node_count
-	movq	%r14, %rax	# __z, D.13439
-	jmp	.L124	#
-	.cfi_endproc
-.LFE854:
-	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE17_M_insert_unique_ESt23_Rb_tree_const_iteratorIS2_ERKS2_, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE17_M_insert_unique_ESt23_Rb_tree_const_iteratorIS2_ERKS2_
-	.section	.rodata.str1.1,"aMS",@progbits,1
+.LFE749:
+	.size	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEED2Ev, .-_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEED2Ev
+	.weak	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEED1Ev
+	.set	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEED1Ev,_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEED2Ev
+	.section	.rodata
 .LC0:
 	.string	"%d -> %ld\n"
-	.section	.text.startup,"ax",@progbits
-	.p2align 4,,15
+	.text
 	.globl	main
 	.type	main, @function
 main:
-.LFB788:
+.LFB747:
 	.cfi_startproc
 	.cfi_personality 0x3,__gxx_personality_v0
-	.cfi_lsda 0x3,.LLSDA788
-	pushq	%r14	#
+	.cfi_lsda 0x3,.LLSDA747
+	push	rbp
 	.cfi_def_cfa_offset 16
-	.cfi_offset 14, -16
-	movl	$10, %edx	#,
-	xorl	%r14d, %r14d	# i
-	pushq	%r13	#
-	.cfi_def_cfa_offset 24
-	.cfi_offset 13, -24
-	pushq	%r12	#
-	.cfi_def_cfa_offset 32
-	.cfi_offset 12, -32
-	pushq	%rbp	#
-	.cfi_def_cfa_offset 40
-	.cfi_offset 6, -40
-	pushq	%rbx	#
-	.cfi_def_cfa_offset 48
-	.cfi_offset 3, -48
-	subq	$80, %rsp	#,
-	.cfi_def_cfa_offset 128
-	movq	8(%rsi), %rdi	# MEM[(char * *)argv_5(D) + 8B], MEM[(char * *)argv_5(D) + 8B]
-	xorl	%esi, %esi	#
-	leaq	40(%rsp), %rax	#, tmp151
-	movl	$0, 40(%rsp)	#, MEM[(struct _Rb_tree_impl *)&distribution]._M_header._M_color
-	movq	$0, 48(%rsp)	#, MEM[(struct _Rb_tree_impl *)&distribution]._M_header._M_parent
-	movq	$0, 72(%rsp)	#, MEM[(struct _Rb_tree_impl *)&distribution]._M_node_count
-	movq	%rax, 56(%rsp)	# tmp151, MEM[(struct _Rb_tree_impl *)&distribution]._M_header._M_left
-	movq	%rax, 64(%rsp)	# tmp151, MEM[(struct _Rb_tree_impl *)&distribution]._M_header._M_right
-	call	strtol	#
-	testl	%eax, %eax	# D.14609
-	movl	%eax, %r12d	# D.14609, maxNum
-	jle	.L142	#,
-.L186:
-	xorl	%r13d, %r13d	# j
-.L162:
-	xorl	%ebp, %ebp	# k
-.L161:
-	xorl	%ebx, %ebx	# l
-	.p2align 4,,10
-	.p2align 3
-.L158:
-	movl	%ebx, %ecx	# l, item$d
-	movl	%ebp, %edx	# k, item$c
-	movl	%r13d, %eax	# j, item$b
-	movl	%r14d, %esi	# i, item$a
-	xorl	%edi, %edi	# len
-	.p2align 4,,10
-	.p2align 3
-.L167:
-	testl	%esi, %esi	# item$a
-	jne	.L143	#,
-	testl	%eax, %eax	# item$b
-	jne	.L143	#,
-	testl	%edx, %edx	# item$c
-	jne	.L143	#,
-	testl	%ecx, %ecx	# item$d
-	.p2align 4,,5
-	jne	.L143	#,
-	movq	48(%rsp), %rdx	# MEM[(struct _Rb_tree *)&distribution + 16B], __i$_M_node
-	testq	%rdx, %rdx	# __i$_M_node
-	je	.L171	#,
-	movq	%rdx, %rax	# __i$_M_node, __i$_M_node
-	leaq	40(%rsp), %rcx	#, __i$_M_node
-	jmp	.L147	#
-	.p2align 4,,10
-	.p2align 3
-.L190:
-	movq	%rax, %rcx	# __i$_M_node, __i$_M_node
-	movq	16(%rax), %rax	# MEM[(struct _Rb_tree_node_base *)__i$_M_node_243 + 16B], __i$_M_node
-	testq	%rax, %rax	# __i$_M_node
-	je	.L189	#,
-.L147:
-	cmpl	32(%rax), %edi	# MEM[(const int &)__i$_M_node_243 + 32], len
-	jle	.L190	#,
-	movq	24(%rax), %rax	# MEM[(struct _Rb_tree_node_base *)__i$_M_node_243 + 24B], __i$_M_node
-	testq	%rax, %rax	# __i$_M_node
-	jne	.L147	#,
-.L189:
-	leaq	40(%rsp), %rax	#, tmp156
-	cmpq	%rax, %rcx	# tmp156, __i$_M_node
-	je	.L172	#,
-	cmpl	32(%rcx), %edi	# MEM[(const int &)__i$_M_node_4 + 32], len
-	movq	%rax, %rsi	# tmp156, __i$_M_node
-	jge	.L180	#,
-	jmp	.L179	#
-	.p2align 4,,10
-	.p2align 3
-.L192:
-	movq	%rdx, %rsi	# __i$_M_node, __i$_M_node
-	movq	16(%rdx), %rdx	# MEM[(struct _Rb_tree_node_base *)__i$_M_node_145 + 16B], __i$_M_node
-	testq	%rdx, %rdx	# __i$_M_node
-	je	.L191	#,
-.L180:
-	cmpl	32(%rdx), %edi	# MEM[(const int &)__i$_M_node_145 + 32], len
-	jle	.L192	#,
-	movq	24(%rdx), %rdx	# MEM[(struct _Rb_tree_node_base *)__i$_M_node_145 + 24B], __i$_M_node
-	testq	%rdx, %rdx	# __i$_M_node
-	jne	.L180	#,
-.L191:
-	leaq	40(%rsp), %rax	#, tmp160
-	cmpq	%rax, %rsi	# tmp160, __i$_M_node
-	je	.L156	#,
-	cmpl	32(%rsi), %edi	# MEM[(const int &)__i$_M_node_17 + 32], len
-	jl	.L156	#,
-	movq	%rsi, %rax	# __i$_M_node, __i$_M_node
-.L157:
-	addq	$1, 40(%rax)	#, MEM[(mapped_type &)__i$_M_node_118 + 40]
-.L153:
-	addl	$1, %ebx	#, l
-	cmpl	%r12d, %ebx	# maxNum, l
-	jl	.L158	#,
-	addl	$1, %ebp	#, k
-	cmpl	%r12d, %ebp	# maxNum, k
-	jl	.L161	#,
-	addl	$1, %r13d	#, j
-	cmpl	%r12d, %r13d	# maxNum, j
-	jl	.L162	#,
-	addl	$1, %r14d	#, i
-	cmpl	%r12d, %r14d	# maxNum, i
-	jl	.L186	#,
-.L142:
-	movq	56(%rsp), %rbx	# MEM[(struct _Rb_tree *)&distribution + 24B], it$_M_node
-	leaq	40(%rsp), %rbp	#, tmp162
-	cmpq	%rbp, %rbx	# tmp182, it$_M_node
-	je	.L165	#,
-.L178:
-	movq	40(%rbx), %rcx	# MEM[(struct pair *)it$_M_node_146 + 32B].second, MEM[(struct pair *)it$_M_node_146 + 32B].second
-	movl	32(%rbx), %edx	# MEM[(struct pair *)it$_M_node_146 + 32B].first, MEM[(struct pair *)it$_M_node_146 + 32B].first
-	movl	$.LC0, %esi	#,
-	movl	$1, %edi	#,
-	xorl	%eax, %eax	#
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	push	rbx
+	sub	rsp, 184
+	.cfi_offset 3, -24
+	mov	DWORD PTR [rbp-180], edi
+	mov	QWORD PTR [rbp-192], rsi
+	lea	rax, [rbp-64]
+	mov	rdi, rax
 .LEHB0:
-	call	__printf_chk	#
-	movq	%rbx, %rdi	# it$_M_node,
-	call	_ZSt18_Rb_tree_incrementPSt18_Rb_tree_node_base	#
-	cmpq	%rbp, %rax	# tmp182, it$_M_node
-	movq	%rax, %rbx	#, it$_M_node
-	jne	.L178	#,
-.L165:
-	movq	48(%rsp), %rsi	# MEM[(struct _Rb_tree *)&distribution + 16B],
-	leaq	32(%rsp), %rdi	#,
-	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E	#
-	addq	$80, %rsp	#,
-	.cfi_remember_state
-	.cfi_def_cfa_offset 48
-	xorl	%eax, %eax	#
-	popq	%rbx	#
-	.cfi_def_cfa_offset 40
-	popq	%rbp	#
-	.cfi_def_cfa_offset 32
-	popq	%r12	#
-	.cfi_def_cfa_offset 24
-	popq	%r13	#
-	.cfi_def_cfa_offset 16
-	popq	%r14	#
-	.cfi_def_cfa_offset 8
-	ret
-	.p2align 4,,10
-	.p2align 3
-.L143:
-	.cfi_restore_state
-	movl	%esi, %r10d	# item$a, D.15092
-	addl	$1, %edi	#, len
-	subl	%eax, %r10d	# item$b, D.15092
-	subl	%edx, %eax	# item$c, D.15090
-	subl	%ecx, %edx	# item$d, D.15088
-	movl	%eax, %r9d	# D.15090, tmp174
-	subl	%esi, %ecx	# item$a, D.15087
-	movl	%r10d, %r8d	# D.15092, tmp173
-	sarl	$31, %r9d	#, tmp174
-	movl	%ecx, %esi	# D.15087, tmp176
-	sarl	$31, %r8d	#, tmp173
-	xorl	%r9d, %eax	# tmp174, item$b
-	sarl	$31, %esi	#, tmp176
-	xorl	%r8d, %r10d	# tmp173, item$a
-	subl	%r9d, %eax	# tmp174, item$b
-	movl	%edx, %r9d	# D.15088, tmp175
-	xorl	%esi, %ecx	# tmp176, item$d
-	sarl	$31, %r9d	#, tmp175
-	subl	%esi, %ecx	# tmp176, item$d
-	movl	%r10d, %esi	# item$a, item$a
-	xorl	%r9d, %edx	# tmp175, item$c
-	subl	%r8d, %esi	# tmp173, item$a
-	subl	%r9d, %edx	# tmp175, item$c
-	jmp	.L167	#
-	.p2align 4,,10
-	.p2align 3
-.L194:
-	movq	%rdx, %rax	# __i$_M_node, __i$_M_node
-	movq	16(%rdx), %rdx	# MEM[(struct _Rb_tree_node_base *)__i$_M_node_47 + 16B], __i$_M_node
-	testq	%rdx, %rdx	# __i$_M_node
-	je	.L193	#,
-.L179:
-	cmpl	32(%rdx), %edi	# MEM[(const int &)__i$_M_node_47 + 32], len
-	jle	.L194	#,
-	movq	24(%rdx), %rdx	# MEM[(struct _Rb_tree_node_base *)__i$_M_node_47 + 24B], __i$_M_node
-	testq	%rdx, %rdx	# __i$_M_node
-	jne	.L179	#,
-.L193:
-	leaq	40(%rsp), %rdx	#, tmp158
-	cmpq	%rdx, %rax	# tmp158, __i$_M_node
-	je	.L144	#,
-	cmpl	32(%rax), %edi	# MEM[(const int &)__i$_M_node_38 + 32], len
-	jge	.L152	#,
-.L144:
-	movl	%edi, (%rsp)	# len, D.15124.first
-	leaq	32(%rsp), %rdi	#,
-	movq	%rsp, %rdx	#,
-	movq	%rax, %rsi	# __i$_M_node,
-	movq	$0, 8(%rsp)	#, D.15124.second
-	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE17_M_insert_unique_ESt23_Rb_tree_const_iteratorIS2_ERKS2_	#
-.L152:
-	movq	$1, 40(%rax)	#, MEM[(mapped_type &)__i$_M_node_235 + 40]
-	jmp	.L153	#
-	.p2align 4,,10
-	.p2align 3
-.L156:
-	movl	%edi, 16(%rsp)	# len, D.15145.first
-	leaq	16(%rsp), %rdx	#,
-	leaq	32(%rsp), %rdi	#,
-	movq	$0, 24(%rsp)	#, D.15145.second
-	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE17_M_insert_unique_ESt23_Rb_tree_const_iteratorIS2_ERKS2_	#
+	call	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEEC1Ev
 .LEHE0:
-	jmp	.L157	#
-.L171:
-	leaq	40(%rsp), %rax	#, __i$_M_node
-	jmp	.L144	#
-.L172:
-	movq	%rcx, %rax	# __i$_M_node, __i$_M_node
-	.p2align 4,,3
-	jmp	.L179	#
-.L177:
-	movq	48(%rsp), %rsi	# MEM[(struct _Rb_tree *)&distribution + 16B],
-	leaq	32(%rsp), %rdi	#,
-	movq	%rax, %rbx	#, tmp172
-	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E	#
-	movq	%rbx, %rdi	# tmp172,
+	mov	rax, QWORD PTR [rbp-192]
+	add	rax, 8
+	mov	rax, QWORD PTR [rax]
+	mov	rdi, rax
+	call	atoi
+	mov	DWORD PTR [rbp-148], eax
+	mov	DWORD PTR [rbp-168], 0
+	mov	DWORD PTR [rbp-164], 0
+	jmp	.L18
+.L27:
+	mov	DWORD PTR [rbp-160], 0
+	jmp	.L19
+.L26:
+	mov	DWORD PTR [rbp-156], 0
+	jmp	.L20
+.L25:
+	mov	DWORD PTR [rbp-152], 0
+	jmp	.L21
+.L24:
+	mov	eax, DWORD PTR [rbp-164]
+	mov	DWORD PTR [rbp-80], eax
+	mov	eax, DWORD PTR [rbp-160]
+	mov	DWORD PTR [rbp-76], eax
+	mov	eax, DWORD PTR [rbp-156]
+	mov	DWORD PTR [rbp-72], eax
+	mov	eax, DWORD PTR [rbp-152]
+	mov	DWORD PTR [rbp-68], eax
+	lea	rax, [rbp-80]
+	mov	rdi, rax
+	call	_Z10pathLengthP7state_t
+	mov	DWORD PTR [rbp-168], eax
+	lea	rdx, [rbp-168]
+	lea	rax, [rbp-64]
+	mov	rsi, rdx
+	mov	rdi, rax
 .LEHB1:
-	call	_Unwind_Resume	#
+	call	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE4findERS3_
+	mov	QWORD PTR [rbp-128], rax
+	lea	rdx, [rbp-128]
+	lea	rax, [rbp-144]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEC1ERKSt17_Rb_tree_iteratorIS2_E
+	lea	rax, [rbp-64]
+	mov	rdi, rax
+	call	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE3endEv
+	mov	QWORD PTR [rbp-112], rax
+	lea	rdx, [rbp-112]
+	lea	rax, [rbp-96]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEC1ERKSt17_Rb_tree_iteratorIS2_E
+	lea	rdx, [rbp-96]
+	lea	rax, [rbp-144]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNKSt23_Rb_tree_const_iteratorISt4pairIKilEEeqERKS3_
+	test	al, al
+	je	.L22
+	lea	rdx, [rbp-168]
+	lea	rax, [rbp-64]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEEixERS3_
+	mov	QWORD PTR [rax], 1
+	jmp	.L23
+.L22:
+	lea	rdx, [rbp-168]
+	lea	rax, [rbp-64]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEEixERS3_
 .LEHE1:
+	mov	rdx, QWORD PTR [rax]
+	add	rdx, 1
+	mov	QWORD PTR [rax], rdx
+.L23:
+	add	DWORD PTR [rbp-152], 1
+.L21:
+	mov	eax, DWORD PTR [rbp-152]
+	cmp	eax, DWORD PTR [rbp-148]
+	setl	al
+	test	al, al
+	jne	.L24
+	add	DWORD PTR [rbp-156], 1
+.L20:
+	mov	eax, DWORD PTR [rbp-156]
+	cmp	eax, DWORD PTR [rbp-148]
+	setl	al
+	test	al, al
+	jne	.L25
+	add	DWORD PTR [rbp-160], 1
+.L19:
+	mov	eax, DWORD PTR [rbp-160]
+	cmp	eax, DWORD PTR [rbp-148]
+	setl	al
+	test	al, al
+	jne	.L26
+	add	DWORD PTR [rbp-164], 1
+.L18:
+	mov	eax, DWORD PTR [rbp-164]
+	cmp	eax, DWORD PTR [rbp-148]
+	setl	al
+	test	al, al
+	jne	.L27
+	lea	rax, [rbp-64]
+	mov	rdi, rax
+.LEHB2:
+	call	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE5beginEv
+	mov	QWORD PTR [rbp-112], rax
+	jmp	.L28
+.L29:
+	lea	rax, [rbp-112]
+	mov	rdi, rax
+	call	_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEptEv
+	mov	rbx, QWORD PTR [rax+8]
+	lea	rax, [rbp-112]
+	mov	rdi, rax
+	call	_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEptEv
+	mov	eax, DWORD PTR [rax]
+	mov	rdx, rbx
+	mov	esi, eax
+	mov	edi, OFFSET FLAT:.LC0
+	mov	eax, 0
+	call	printf
+	lea	rax, [rbp-112]
+	mov	esi, 0
+	mov	rdi, rax
+	call	_ZNSt17_Rb_tree_iteratorISt4pairIKilEEppEi
+.L28:
+	lea	rax, [rbp-64]
+	mov	rdi, rax
+	call	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE3endEv
+.LEHE2:
+	mov	QWORD PTR [rbp-96], rax
+	lea	rdx, [rbp-96]
+	lea	rax, [rbp-112]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEneERKS3_
+	test	al, al
+	jne	.L29
+	lea	rax, [rbp-64]
+	mov	rdi, rax
+.LEHB3:
+	call	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEED1Ev
+.LEHE3:
+	mov	eax, 0
+	jmp	.L38
+.L36:
+	mov	rbx, rax
+	jmp	.L32
+.L37:
+	mov	rbx, rax
+.L32:
+	lea	rax, [rbp-64]
+	mov	rdi, rax
+	call	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEED1Ev
+	mov	rax, rbx
+	jmp	.L34
+.L35:
+.L34:
+	mov	rdi, rax
+.LEHB4:
+	call	_Unwind_Resume
+.LEHE4:
+.L38:
+	add	rsp, 184
+	pop	rbx
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
 	.cfi_endproc
-.LFE788:
+.LFE747:
 	.globl	__gxx_personality_v0
 	.section	.gcc_except_table,"a",@progbits
-.LLSDA788:
+.LLSDA747:
 	.byte	0xff
 	.byte	0xff
 	.byte	0x1
-	.uleb128 .LLSDACSE788-.LLSDACSB788
-.LLSDACSB788:
-	.uleb128 .LEHB0-.LFB788
+	.uleb128 .LLSDACSE747-.LLSDACSB747
+.LLSDACSB747:
+	.uleb128 .LEHB0-.LFB747
 	.uleb128 .LEHE0-.LEHB0
-	.uleb128 .L177-.LFB788
+	.uleb128 .L35-.LFB747
 	.uleb128 0
-	.uleb128 .LEHB1-.LFB788
+	.uleb128 .LEHB1-.LFB747
 	.uleb128 .LEHE1-.LEHB1
+	.uleb128 .L36-.LFB747
+	.uleb128 0
+	.uleb128 .LEHB2-.LFB747
+	.uleb128 .LEHE2-.LEHB2
+	.uleb128 .L37-.LFB747
+	.uleb128 0
+	.uleb128 .LEHB3-.LFB747
+	.uleb128 .LEHE3-.LEHB3
+	.uleb128 .L35-.LFB747
+	.uleb128 0
+	.uleb128 .LEHB4-.LFB747
+	.uleb128 .LEHE4-.LEHB4
 	.uleb128 0
 	.uleb128 0
-.LLSDACSE788:
-	.section	.text.startup
+.LLSDACSE747:
+	.text
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu/Linaro 4.7.2-2ubuntu1) 4.7.2"
+	.section	.text._ZNSt3mapIilSt4lessIiESaISt4pairIKilEEEC2Ev,"axG",@progbits,_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEEC5Ev,comdat
+	.align 2
+	.weak	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEEC2Ev
+	.type	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEEC2Ev, @function
+_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEEC2Ev:
+.LFB753:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 16
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EEC1Ev
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE753:
+	.size	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEEC2Ev, .-_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEEC2Ev
+	.weak	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEEC1Ev
+	.set	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEEC1Ev,_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEEC2Ev
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EED2Ev,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EED5Ev,comdat
+	.align 2
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EED2Ev
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EED2Ev, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EED2Ev:
+.LFB757:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 16
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rdi, rax
+	call	_ZNSaISt13_Rb_tree_nodeISt4pairIKilEEED2Ev
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE757:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EED2Ev, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EED2Ev
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EED1Ev
+	.set	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EED1Ev,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EED2Ev
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EED2Ev,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EED5Ev,comdat
+	.align 2
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EED2Ev
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EED2Ev, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EED2Ev:
+.LFB759:
+	.cfi_startproc
+	.cfi_personality 0x3,__gxx_personality_v0
+	.cfi_lsda 0x3,.LLSDA759
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	push	rbx
+	sub	rsp, 24
+	.cfi_offset 3, -24
+	mov	QWORD PTR [rbp-24], rdi
+	mov	rax, QWORD PTR [rbp-24]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_beginEv
+	mov	rdx, rax
+	mov	rax, QWORD PTR [rbp-24]
+	mov	rsi, rdx
+	mov	rdi, rax
+.LEHB5:
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E
+.LEHE5:
+	mov	rax, QWORD PTR [rbp-24]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EED1Ev
+	jmp	.L46
+.L45:
+	mov	rbx, rax
+	mov	rax, QWORD PTR [rbp-24]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EED1Ev
+	mov	rax, rbx
+	mov	rdi, rax
+.LEHB6:
+	call	_Unwind_Resume
+.LEHE6:
+.L46:
+	add	rsp, 24
+	pop	rbx
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE759:
+	.section	.gcc_except_table
+.LLSDA759:
+	.byte	0xff
+	.byte	0xff
+	.byte	0x1
+	.uleb128 .LLSDACSE759-.LLSDACSB759
+.LLSDACSB759:
+	.uleb128 .LEHB5-.LFB759
+	.uleb128 .LEHE5-.LEHB5
+	.uleb128 .L45-.LFB759
+	.uleb128 0
+	.uleb128 .LEHB6-.LFB759
+	.uleb128 .LEHE6-.LEHB6
+	.uleb128 0
+	.uleb128 0
+.LLSDACSE759:
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EED2Ev,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EED5Ev,comdat
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EED2Ev, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EED2Ev
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EED1Ev
+	.set	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EED1Ev,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EED2Ev
+	.section	.text._ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE4findERS3_,"axG",@progbits,_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE4findERS3_,comdat
+	.align 2
+	.weak	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE4findERS3_
+	.type	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE4findERS3_, @function
+_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE4findERS3_:
+.LFB761:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 16
+	mov	QWORD PTR [rbp-8], rdi
+	mov	QWORD PTR [rbp-16], rsi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rdx, QWORD PTR [rbp-16]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE4findERS1_
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE761:
+	.size	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE4findERS3_, .-_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE4findERS3_
+	.section	.text._ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEC2ERKSt17_Rb_tree_iteratorIS2_E,"axG",@progbits,_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEC5ERKSt17_Rb_tree_iteratorIS2_E,comdat
+	.align 2
+	.weak	_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEC2ERKSt17_Rb_tree_iteratorIS2_E
+	.type	_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEC2ERKSt17_Rb_tree_iteratorIS2_E, @function
+_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEC2ERKSt17_Rb_tree_iteratorIS2_E:
+.LFB763:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	QWORD PTR [rbp-16], rsi
+	mov	rax, QWORD PTR [rbp-16]
+	mov	rdx, QWORD PTR [rax]
+	mov	rax, QWORD PTR [rbp-8]
+	mov	QWORD PTR [rax], rdx
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE763:
+	.size	_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEC2ERKSt17_Rb_tree_iteratorIS2_E, .-_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEC2ERKSt17_Rb_tree_iteratorIS2_E
+	.weak	_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEC1ERKSt17_Rb_tree_iteratorIS2_E
+	.set	_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEC1ERKSt17_Rb_tree_iteratorIS2_E,_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEC2ERKSt17_Rb_tree_iteratorIS2_E
+	.section	.text._ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE3endEv,"axG",@progbits,_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE3endEv,comdat
+	.align 2
+	.weak	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE3endEv
+	.type	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE3endEv, @function
+_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE3endEv:
+.LFB765:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 16
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE3endEv
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE765:
+	.size	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE3endEv, .-_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE3endEv
+	.section	.text._ZNKSt23_Rb_tree_const_iteratorISt4pairIKilEEeqERKS3_,"axG",@progbits,_ZNKSt23_Rb_tree_const_iteratorISt4pairIKilEEeqERKS3_,comdat
+	.align 2
+	.weak	_ZNKSt23_Rb_tree_const_iteratorISt4pairIKilEEeqERKS3_
+	.type	_ZNKSt23_Rb_tree_const_iteratorISt4pairIKilEEeqERKS3_, @function
+_ZNKSt23_Rb_tree_const_iteratorISt4pairIKilEEeqERKS3_:
+.LFB766:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	QWORD PTR [rbp-16], rsi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rdx, QWORD PTR [rax]
+	mov	rax, QWORD PTR [rbp-16]
+	mov	rax, QWORD PTR [rax]
+	cmp	rdx, rax
+	sete	al
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE766:
+	.size	_ZNKSt23_Rb_tree_const_iteratorISt4pairIKilEEeqERKS3_, .-_ZNKSt23_Rb_tree_const_iteratorISt4pairIKilEEeqERKS3_
+	.section	.text._ZNSt3mapIilSt4lessIiESaISt4pairIKilEEEixERS3_,"axG",@progbits,_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEEixERS3_,comdat
+	.align 2
+	.weak	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEEixERS3_
+	.type	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEEixERS3_, @function
+_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEEixERS3_:
+.LFB767:
+	.cfi_startproc
+	.cfi_personality 0x3,__gxx_personality_v0
+	.cfi_lsda 0x3,.LLSDA767
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	push	r13
+	push	r12
+	push	rbx
+	sub	rsp, 88
+	.cfi_offset 13, -24
+	.cfi_offset 12, -32
+	.cfi_offset 3, -40
+	mov	QWORD PTR [rbp-104], rdi
+	mov	QWORD PTR [rbp-112], rsi
+	mov	rdx, QWORD PTR [rbp-112]
+	mov	rax, QWORD PTR [rbp-104]
+	mov	rsi, rdx
+	mov	rdi, rax
+.LEHB7:
+	call	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE11lower_boundERS3_
+.LEHE7:
+	mov	QWORD PTR [rbp-80], rax
+	mov	ebx, 0
+	mov	r12d, 0
+	mov	rax, QWORD PTR [rbp-104]
+	mov	rdi, rax
+.LEHB8:
+	call	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE3endEv
+	mov	QWORD PTR [rbp-64], rax
+	mov	ebx, 1
+	lea	rdx, [rbp-64]
+	lea	rax, [rbp-80]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEeqERKS3_
+	test	al, al
+	jne	.L55
+	lea	rax, [rbp-80]
+	mov	rdi, rax
+	call	_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEdeEv
+	mov	r13, rax
+	mov	rax, QWORD PTR [rbp-104]
+	mov	rdi, rax
+	call	_ZNKSt3mapIilSt4lessIiESaISt4pairIKilEEE8key_compEv
+.LEHE8:
+	mov	r12d, 1
+	mov	rcx, QWORD PTR [rbp-112]
+	lea	rax, [rbp-81]
+	mov	rdx, r13
+	mov	rsi, rcx
+	mov	rdi, rax
+	call	_ZNKSt4lessIiEclERKiS2_
+	test	al, al
+	je	.L56
+.L55:
+	mov	eax, 1
+	jmp	.L57
+.L56:
+	mov	eax, 0
+.L57:
+	test	r12b, r12b
+	test	bl, bl
+	test	al, al
+	je	.L60
+	mov	QWORD PTR [rbp-56], 0
+	lea	rdx, [rbp-56]
+	mov	rcx, QWORD PTR [rbp-112]
+	lea	rax, [rbp-48]
+	mov	rsi, rcx
+	mov	rdi, rax
+	call	_ZNSt4pairIKilEC1ERS0_RKl
+	lea	rdx, [rbp-48]
+	mov	rcx, QWORD PTR [rbp-80]
+	mov	rax, QWORD PTR [rbp-104]
+	mov	rsi, rcx
+	mov	rdi, rax
+.LEHB9:
+	call	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE6insertESt17_Rb_tree_iteratorIS4_ERKS4_
+.LEHE9:
+	mov	QWORD PTR [rbp-80], rax
+.L60:
+	lea	rax, [rbp-80]
+	mov	rdi, rax
+	call	_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEdeEv
+	add	rax, 8
+	jmp	.L70
+.L68:
+	test	r12b, r12b
+	test	bl, bl
+	jmp	.L65
+.L69:
+	jmp	.L65
+.L67:
+.L65:
+	mov	rdi, rax
+.LEHB10:
+	call	_Unwind_Resume
+.LEHE10:
+.L70:
+	add	rsp, 88
+	pop	rbx
+	pop	r12
+	pop	r13
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE767:
+	.section	.gcc_except_table
+.LLSDA767:
+	.byte	0xff
+	.byte	0xff
+	.byte	0x1
+	.uleb128 .LLSDACSE767-.LLSDACSB767
+.LLSDACSB767:
+	.uleb128 .LEHB7-.LFB767
+	.uleb128 .LEHE7-.LEHB7
+	.uleb128 .L67-.LFB767
+	.uleb128 0
+	.uleb128 .LEHB8-.LFB767
+	.uleb128 .LEHE8-.LEHB8
+	.uleb128 .L68-.LFB767
+	.uleb128 0
+	.uleb128 .LEHB9-.LFB767
+	.uleb128 .LEHE9-.LEHB9
+	.uleb128 .L69-.LFB767
+	.uleb128 0
+	.uleb128 .LEHB10-.LFB767
+	.uleb128 .LEHE10-.LEHB10
+	.uleb128 0
+	.uleb128 0
+.LLSDACSE767:
+	.section	.text._ZNSt3mapIilSt4lessIiESaISt4pairIKilEEEixERS3_,"axG",@progbits,_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEEixERS3_,comdat
+	.size	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEEixERS3_, .-_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEEixERS3_
+	.section	.text._ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE5beginEv,"axG",@progbits,_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE5beginEv,comdat
+	.align 2
+	.weak	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE5beginEv
+	.type	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE5beginEv, @function
+_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE5beginEv:
+.LFB768:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 16
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE5beginEv
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE768:
+	.size	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE5beginEv, .-_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE5beginEv
+	.section	.text._ZNKSt17_Rb_tree_iteratorISt4pairIKilEEneERKS3_,"axG",@progbits,_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEneERKS3_,comdat
+	.align 2
+	.weak	_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEneERKS3_
+	.type	_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEneERKS3_, @function
+_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEneERKS3_:
+.LFB769:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	QWORD PTR [rbp-16], rsi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rdx, QWORD PTR [rax]
+	mov	rax, QWORD PTR [rbp-16]
+	mov	rax, QWORD PTR [rax]
+	cmp	rdx, rax
+	setne	al
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE769:
+	.size	_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEneERKS3_, .-_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEneERKS3_
+	.section	.text._ZNSt17_Rb_tree_iteratorISt4pairIKilEEppEi,"axG",@progbits,_ZNSt17_Rb_tree_iteratorISt4pairIKilEEppEi,comdat
+	.align 2
+	.weak	_ZNSt17_Rb_tree_iteratorISt4pairIKilEEppEi
+	.type	_ZNSt17_Rb_tree_iteratorISt4pairIKilEEppEi, @function
+_ZNSt17_Rb_tree_iteratorISt4pairIKilEEppEi:
+.LFB770:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 32
+	mov	QWORD PTR [rbp-24], rdi
+	mov	DWORD PTR [rbp-28], esi
+	mov	rax, QWORD PTR [rbp-24]
+	mov	rax, QWORD PTR [rax]
+	mov	QWORD PTR [rbp-16], rax
+	mov	rax, QWORD PTR [rbp-24]
+	mov	rax, QWORD PTR [rax]
+	mov	rdi, rax
+	call	_ZSt18_Rb_tree_incrementPSt18_Rb_tree_node_base
+	mov	rdx, QWORD PTR [rbp-24]
+	mov	QWORD PTR [rdx], rax
+	mov	rax, QWORD PTR [rbp-16]
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE770:
+	.size	_ZNSt17_Rb_tree_iteratorISt4pairIKilEEppEi, .-_ZNSt17_Rb_tree_iteratorISt4pairIKilEEppEi
+	.section	.text._ZNKSt17_Rb_tree_iteratorISt4pairIKilEEptEv,"axG",@progbits,_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEptEv,comdat
+	.align 2
+	.weak	_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEptEv
+	.type	_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEptEv, @function
+_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEptEv:
+.LFB771:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 16
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rax, QWORD PTR [rax]
+	add	rax, 32
+	mov	rdi, rax
+	call	_ZSt11__addressofISt4pairIKilEEPT_RS3_
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE771:
+	.size	_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEptEv, .-_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEptEv
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EEC2Ev,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EEC5Ev,comdat
+	.align 2
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EEC2Ev
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EEC2Ev, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EEC2Ev:
+.LFB775:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 16
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EEC1Ev
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE775:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EEC2Ev, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EEC2Ev
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EEC1Ev
+	.set	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EEC1Ev,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EEC2Ev
+	.section	.text._ZNSaISt13_Rb_tree_nodeISt4pairIKilEEED2Ev,"axG",@progbits,_ZNSaISt13_Rb_tree_nodeISt4pairIKilEEED5Ev,comdat
+	.align 2
+	.weak	_ZNSaISt13_Rb_tree_nodeISt4pairIKilEEED2Ev
+	.type	_ZNSaISt13_Rb_tree_nodeISt4pairIKilEEED2Ev, @function
+_ZNSaISt13_Rb_tree_nodeISt4pairIKilEEED2Ev:
+.LFB778:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 16
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rdi, rax
+	call	_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEED2Ev
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE778:
+	.size	_ZNSaISt13_Rb_tree_nodeISt4pairIKilEEED2Ev, .-_ZNSaISt13_Rb_tree_nodeISt4pairIKilEEED2Ev
+	.weak	_ZNSaISt13_Rb_tree_nodeISt4pairIKilEEED1Ev
+	.set	_ZNSaISt13_Rb_tree_nodeISt4pairIKilEEED1Ev,_ZNSaISt13_Rb_tree_nodeISt4pairIKilEEED2Ev
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E,comdat
+	.align 2
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E:
+.LFB780:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 32
+	mov	QWORD PTR [rbp-24], rdi
+	mov	QWORD PTR [rbp-32], rsi
+	jmp	.L83
+.L84:
+	mov	rax, QWORD PTR [rbp-32]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_rightEPSt18_Rb_tree_node_base
+	mov	rdx, rax
+	mov	rax, QWORD PTR [rbp-24]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E
+	mov	rax, QWORD PTR [rbp-32]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE7_S_leftEPSt18_Rb_tree_node_base
+	mov	QWORD PTR [rbp-8], rax
+	mov	rdx, QWORD PTR [rbp-32]
+	mov	rax, QWORD PTR [rbp-24]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS2_E
+	mov	rax, QWORD PTR [rbp-8]
+	mov	QWORD PTR [rbp-32], rax
+.L83:
+	cmp	QWORD PTR [rbp-32], 0
+	setne	al
+	test	al, al
+	jne	.L84
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE780:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_beginEv,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_beginEv,comdat
+	.align 2
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_beginEv
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_beginEv, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_beginEv:
+.LFB781:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rax, QWORD PTR [rax+16]
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE781:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_beginEv, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_beginEv
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE4findERS1_,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE4findERS1_,comdat
+	.align 2
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE4findERS1_
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE4findERS1_, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE4findERS1_:
+.LFB782:
+	.cfi_startproc
+	.cfi_personality 0x3,__gxx_personality_v0
+	.cfi_lsda 0x3,.LLSDA782
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	push	rbx
+	sub	rsp, 56
+	.cfi_offset 3, -24
+	mov	QWORD PTR [rbp-56], rdi
+	mov	QWORD PTR [rbp-64], rsi
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_M_endEv
+	mov	rbx, rax
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_beginEv
+	mov	rsi, rax
+	mov	rdx, QWORD PTR [rbp-64]
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rcx, rdx
+	mov	rdx, rbx
+	mov	rdi, rax
+.LEHB11:
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE14_M_lower_boundEPSt13_Rb_tree_nodeIS2_ESB_RS1_
+.LEHE11:
+	mov	QWORD PTR [rbp-48], rax
+	mov	ebx, 0
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rdi, rax
+.LEHB12:
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE3endEv
+	mov	QWORD PTR [rbp-32], rax
+	mov	ebx, 1
+	lea	rdx, [rbp-32]
+	lea	rax, [rbp-48]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEeqERKS3_
+	test	al, al
+	jne	.L88
+	mov	rax, QWORD PTR [rbp-48]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_S_keyEPKSt18_Rb_tree_node_base
+	mov	rdx, rax
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rcx, QWORD PTR [rbp-64]
+	mov	rsi, rcx
+	mov	rdi, rax
+	call	_ZNKSt4lessIiEclERKiS2_
+	test	al, al
+	je	.L89
+.L88:
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE3endEv
+.LEHE12:
+	jmp	.L90
+.L89:
+	mov	rax, QWORD PTR [rbp-48]
+.L90:
+	test	bl, bl
+	jmp	.L98
+.L97:
+	test	bl, bl
+	jmp	.L95
+.L96:
+.L95:
+	mov	rdi, rax
+.LEHB13:
+	call	_Unwind_Resume
+.LEHE13:
+.L98:
+	add	rsp, 56
+	pop	rbx
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE782:
+	.section	.gcc_except_table
+.LLSDA782:
+	.byte	0xff
+	.byte	0xff
+	.byte	0x1
+	.uleb128 .LLSDACSE782-.LLSDACSB782
+.LLSDACSB782:
+	.uleb128 .LEHB11-.LFB782
+	.uleb128 .LEHE11-.LEHB11
+	.uleb128 .L96-.LFB782
+	.uleb128 0
+	.uleb128 .LEHB12-.LFB782
+	.uleb128 .LEHE12-.LEHB12
+	.uleb128 .L97-.LFB782
+	.uleb128 0
+	.uleb128 .LEHB13-.LFB782
+	.uleb128 .LEHE13-.LEHB13
+	.uleb128 0
+	.uleb128 0
+.LLSDACSE782:
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE4findERS1_,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE4findERS1_,comdat
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE4findERS1_, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE4findERS1_
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE3endEv,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE3endEv,comdat
+	.align 2
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE3endEv
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE3endEv, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE3endEv:
+.LFB783:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 32
+	mov	QWORD PTR [rbp-24], rdi
+	mov	rax, QWORD PTR [rbp-24]
+	lea	rdx, [rax+8]
+	lea	rax, [rbp-16]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNSt17_Rb_tree_iteratorISt4pairIKilEEC1EPSt13_Rb_tree_nodeIS2_E
+	mov	rax, QWORD PTR [rbp-16]
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE783:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE3endEv, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE3endEv
+	.section	.text._ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE11lower_boundERS3_,"axG",@progbits,_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE11lower_boundERS3_,comdat
+	.align 2
+	.weak	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE11lower_boundERS3_
+	.type	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE11lower_boundERS3_, @function
+_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE11lower_boundERS3_:
+.LFB784:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 16
+	mov	QWORD PTR [rbp-8], rdi
+	mov	QWORD PTR [rbp-16], rsi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rdx, QWORD PTR [rbp-16]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11lower_boundERS1_
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE784:
+	.size	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE11lower_boundERS3_, .-_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE11lower_boundERS3_
+	.section	.text._ZNKSt3mapIilSt4lessIiESaISt4pairIKilEEE8key_compEv,"axG",@progbits,_ZNKSt3mapIilSt4lessIiESaISt4pairIKilEEE8key_compEv,comdat
+	.align 2
+	.weak	_ZNKSt3mapIilSt4lessIiESaISt4pairIKilEEE8key_compEv
+	.type	_ZNKSt3mapIilSt4lessIiESaISt4pairIKilEEE8key_compEv, @function
+_ZNKSt3mapIilSt4lessIiESaISt4pairIKilEEE8key_compEv:
+.LFB785:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	push	rbx
+	sub	rsp, 24
+	.cfi_offset 3, -24
+	mov	QWORD PTR [rbp-24], rdi
+	mov	rax, QWORD PTR [rbp-24]
+	mov	rdi, rax
+	call	_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8key_compEv
+	mov	eax, ebx
+	add	rsp, 24
+	pop	rbx
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE785:
+	.size	_ZNKSt3mapIilSt4lessIiESaISt4pairIKilEEE8key_compEv, .-_ZNKSt3mapIilSt4lessIiESaISt4pairIKilEEE8key_compEv
+	.section	.text._ZNKSt17_Rb_tree_iteratorISt4pairIKilEEdeEv,"axG",@progbits,_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEdeEv,comdat
+	.align 2
+	.weak	_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEdeEv
+	.type	_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEdeEv, @function
+_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEdeEv:
+.LFB786:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rax, QWORD PTR [rax]
+	add	rax, 32
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE786:
+	.size	_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEdeEv, .-_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEdeEv
+	.section	.text._ZNKSt4lessIiEclERKiS2_,"axG",@progbits,_ZNKSt4lessIiEclERKiS2_,comdat
+	.align 2
+	.weak	_ZNKSt4lessIiEclERKiS2_
+	.type	_ZNKSt4lessIiEclERKiS2_, @function
+_ZNKSt4lessIiEclERKiS2_:
+.LFB787:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	QWORD PTR [rbp-16], rsi
+	mov	QWORD PTR [rbp-24], rdx
+	mov	rax, QWORD PTR [rbp-16]
+	mov	edx, DWORD PTR [rax]
+	mov	rax, QWORD PTR [rbp-24]
+	mov	eax, DWORD PTR [rax]
+	cmp	edx, eax
+	setl	al
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE787:
+	.size	_ZNKSt4lessIiEclERKiS2_, .-_ZNKSt4lessIiEclERKiS2_
+	.section	.text._ZNKSt17_Rb_tree_iteratorISt4pairIKilEEeqERKS3_,"axG",@progbits,_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEeqERKS3_,comdat
+	.align 2
+	.weak	_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEeqERKS3_
+	.type	_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEeqERKS3_, @function
+_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEeqERKS3_:
+.LFB788:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	QWORD PTR [rbp-16], rsi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rdx, QWORD PTR [rax]
+	mov	rax, QWORD PTR [rbp-16]
+	mov	rax, QWORD PTR [rax]
+	cmp	rdx, rax
+	sete	al
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE788:
+	.size	_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEeqERKS3_, .-_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEeqERKS3_
+	.section	.text._ZNSt4pairIKilEC2ERS0_RKl,"axG",@progbits,_ZNSt4pairIKilEC5ERS0_RKl,comdat
+	.align 2
+	.weak	_ZNSt4pairIKilEC2ERS0_RKl
+	.type	_ZNSt4pairIKilEC2ERS0_RKl, @function
+_ZNSt4pairIKilEC2ERS0_RKl:
+.LFB790:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	QWORD PTR [rbp-16], rsi
+	mov	QWORD PTR [rbp-24], rdx
+	mov	rax, QWORD PTR [rbp-16]
+	mov	edx, DWORD PTR [rax]
+	mov	rax, QWORD PTR [rbp-8]
+	mov	DWORD PTR [rax], edx
+	mov	rax, QWORD PTR [rbp-24]
+	mov	rdx, QWORD PTR [rax]
+	mov	rax, QWORD PTR [rbp-8]
+	mov	QWORD PTR [rax+8], rdx
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE790:
+	.size	_ZNSt4pairIKilEC2ERS0_RKl, .-_ZNSt4pairIKilEC2ERS0_RKl
+	.weak	_ZNSt4pairIKilEC1ERS0_RKl
+	.set	_ZNSt4pairIKilEC1ERS0_RKl,_ZNSt4pairIKilEC2ERS0_RKl
+	.section	.text._ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE6insertESt17_Rb_tree_iteratorIS4_ERKS4_,"axG",@progbits,_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE6insertESt17_Rb_tree_iteratorIS4_ERKS4_,comdat
+	.align 2
+	.weak	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE6insertESt17_Rb_tree_iteratorIS4_ERKS4_
+	.type	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE6insertESt17_Rb_tree_iteratorIS4_ERKS4_, @function
+_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE6insertESt17_Rb_tree_iteratorIS4_ERKS4_:
+.LFB792:
+	.cfi_startproc
+	.cfi_personality 0x3,__gxx_personality_v0
+	.cfi_lsda 0x3,.LLSDA792
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 48
+	mov	QWORD PTR [rbp-24], rdi
+	mov	QWORD PTR [rbp-32], rsi
+	mov	QWORD PTR [rbp-40], rdx
+	lea	rdx, [rbp-32]
+	lea	rax, [rbp-16]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEC1ERKSt17_Rb_tree_iteratorIS2_E
+	mov	rax, QWORD PTR [rbp-24]
+	mov	rdx, QWORD PTR [rbp-40]
+	mov	rcx, QWORD PTR [rbp-16]
+	mov	rsi, rcx
+	mov	rdi, rax
+.LEHB14:
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE17_M_insert_unique_ESt23_Rb_tree_const_iteratorIS2_ERKS2_
+.LEHE14:
+	jmp	.L116
+.L115:
+	mov	rdi, rax
+.LEHB15:
+	call	_Unwind_Resume
+.LEHE15:
+.L116:
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE792:
+	.section	.gcc_except_table
+.LLSDA792:
+	.byte	0xff
+	.byte	0xff
+	.byte	0x1
+	.uleb128 .LLSDACSE792-.LLSDACSB792
+.LLSDACSB792:
+	.uleb128 .LEHB14-.LFB792
+	.uleb128 .LEHE14-.LEHB14
+	.uleb128 .L115-.LFB792
+	.uleb128 0
+	.uleb128 .LEHB15-.LFB792
+	.uleb128 .LEHE15-.LEHB15
+	.uleb128 0
+	.uleb128 0
+.LLSDACSE792:
+	.section	.text._ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE6insertESt17_Rb_tree_iteratorIS4_ERKS4_,"axG",@progbits,_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE6insertESt17_Rb_tree_iteratorIS4_ERKS4_,comdat
+	.size	_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE6insertESt17_Rb_tree_iteratorIS4_ERKS4_, .-_ZNSt3mapIilSt4lessIiESaISt4pairIKilEEE6insertESt17_Rb_tree_iteratorIS4_ERKS4_
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE5beginEv,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE5beginEv,comdat
+	.align 2
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE5beginEv
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE5beginEv, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE5beginEv:
+.LFB793:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 32
+	mov	QWORD PTR [rbp-24], rdi
+	mov	rax, QWORD PTR [rbp-24]
+	mov	rdx, QWORD PTR [rax+24]
+	lea	rax, [rbp-16]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNSt17_Rb_tree_iteratorISt4pairIKilEEC1EPSt13_Rb_tree_nodeIS2_E
+	mov	rax, QWORD PTR [rbp-16]
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE793:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE5beginEv, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE5beginEv
+	.section	.text._ZSt11__addressofISt4pairIKilEEPT_RS3_,"axG",@progbits,_ZSt11__addressofISt4pairIKilEEPT_RS3_,comdat
+	.weak	_ZSt11__addressofISt4pairIKilEEPT_RS3_
+	.type	_ZSt11__addressofISt4pairIKilEEPT_RS3_, @function
+_ZSt11__addressofISt4pairIKilEEPT_RS3_:
+.LFB794:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE794:
+	.size	_ZSt11__addressofISt4pairIKilEEPT_RS3_, .-_ZSt11__addressofISt4pairIKilEEPT_RS3_
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EEC2Ev,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EEC5Ev,comdat
+	.align 2
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EEC2Ev
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EEC2Ev, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EEC2Ev:
+.LFB797:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 16
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rdi, rax
+	call	_ZNSaISt13_Rb_tree_nodeISt4pairIKilEEEC2Ev
+	mov	rax, QWORD PTR [rbp-8]
+	mov	DWORD PTR [rax+8], 0
+	mov	rax, QWORD PTR [rbp-8]
+	mov	QWORD PTR [rax+16], 0
+	mov	rax, QWORD PTR [rbp-8]
+	mov	QWORD PTR [rax+24], 0
+	mov	rax, QWORD PTR [rbp-8]
+	mov	QWORD PTR [rax+32], 0
+	mov	rax, QWORD PTR [rbp-8]
+	mov	QWORD PTR [rax+40], 0
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EE13_M_initializeEv
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE797:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EEC2Ev, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EEC2Ev
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EEC1Ev
+	.set	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EEC1Ev,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EEC2Ev
+	.section	.text._ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEED2Ev,"axG",@progbits,_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEED5Ev,comdat
+	.align 2
+	.weak	_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEED2Ev
+	.type	_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEED2Ev, @function
+_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEED2Ev:
+.LFB800:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE800:
+	.size	_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEED2Ev, .-_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEED2Ev
+	.weak	_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEED1Ev
+	.set	_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEED1Ev,_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEED2Ev
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_rightEPSt18_Rb_tree_node_base,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_rightEPSt18_Rb_tree_node_base,comdat
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_rightEPSt18_Rb_tree_node_base
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_rightEPSt18_Rb_tree_node_base, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_rightEPSt18_Rb_tree_node_base:
+.LFB802:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rax, QWORD PTR [rax+24]
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE802:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_rightEPSt18_Rb_tree_node_base, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_rightEPSt18_Rb_tree_node_base
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE7_S_leftEPSt18_Rb_tree_node_base,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE7_S_leftEPSt18_Rb_tree_node_base,comdat
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE7_S_leftEPSt18_Rb_tree_node_base
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE7_S_leftEPSt18_Rb_tree_node_base, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE7_S_leftEPSt18_Rb_tree_node_base:
+.LFB803:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rax, QWORD PTR [rax+16]
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE803:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE7_S_leftEPSt18_Rb_tree_node_base, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE7_S_leftEPSt18_Rb_tree_node_base
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS2_E,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS2_E,comdat
+	.align 2
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS2_E
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS2_E, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS2_E:
+.LFB804:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	push	rbx
+	sub	rsp, 40
+	.cfi_offset 3, -24
+	mov	QWORD PTR [rbp-40], rdi
+	mov	QWORD PTR [rbp-48], rsi
+	mov	rax, QWORD PTR [rbp-48]
+	add	rax, 32
+	mov	rdi, rax
+	call	_ZSt11__addressofISt4pairIKilEEPT_RS3_
+	mov	rbx, rax
+	lea	rax, [rbp-17]
+	mov	rdx, QWORD PTR [rbp-40]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13get_allocatorEv
+	lea	rax, [rbp-17]
+	mov	rsi, rbx
+	mov	rdi, rax
+	call	_ZN9__gnu_cxx13new_allocatorISt4pairIKilEE7destroyEPS3_
+	lea	rax, [rbp-17]
+	mov	rdi, rax
+	call	_ZNSaISt4pairIKilEED1Ev
+	mov	rdx, QWORD PTR [rbp-48]
+	mov	rax, QWORD PTR [rbp-40]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_put_nodeEPSt13_Rb_tree_nodeIS2_E
+	add	rsp, 40
+	pop	rbx
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE804:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS2_E, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS2_E
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_M_endEv,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_M_endEv,comdat
+	.align 2
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_M_endEv
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_M_endEv, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_M_endEv:
+.LFB805:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	add	rax, 8
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE805:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_M_endEv, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_M_endEv
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE14_M_lower_boundEPSt13_Rb_tree_nodeIS2_ESB_RS1_,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE14_M_lower_boundEPSt13_Rb_tree_nodeIS2_ESB_RS1_,comdat
+	.align 2
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE14_M_lower_boundEPSt13_Rb_tree_nodeIS2_ESB_RS1_
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE14_M_lower_boundEPSt13_Rb_tree_nodeIS2_ESB_RS1_, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE14_M_lower_boundEPSt13_Rb_tree_nodeIS2_ESB_RS1_:
+.LFB806:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 48
+	mov	QWORD PTR [rbp-24], rdi
+	mov	QWORD PTR [rbp-32], rsi
+	mov	QWORD PTR [rbp-40], rdx
+	mov	QWORD PTR [rbp-48], rcx
+	jmp	.L132
+.L134:
+	mov	rax, QWORD PTR [rbp-32]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_S_keyEPKSt13_Rb_tree_nodeIS2_E
+	mov	rcx, rax
+	mov	rax, QWORD PTR [rbp-24]
+	mov	rdx, QWORD PTR [rbp-48]
+	mov	rsi, rcx
+	mov	rdi, rax
+	call	_ZNKSt4lessIiEclERKiS2_
+	xor	eax, 1
+	test	al, al
+	je	.L133
+	mov	rax, QWORD PTR [rbp-32]
+	mov	QWORD PTR [rbp-40], rax
+	mov	rax, QWORD PTR [rbp-32]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE7_S_leftEPSt18_Rb_tree_node_base
+	mov	QWORD PTR [rbp-32], rax
+	jmp	.L132
+.L133:
+	mov	rax, QWORD PTR [rbp-32]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_rightEPSt18_Rb_tree_node_base
+	mov	QWORD PTR [rbp-32], rax
+.L132:
+	cmp	QWORD PTR [rbp-32], 0
+	setne	al
+	test	al, al
+	jne	.L134
+	mov	rdx, QWORD PTR [rbp-40]
+	lea	rax, [rbp-16]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNSt17_Rb_tree_iteratorISt4pairIKilEEC1EPSt13_Rb_tree_nodeIS2_E
+	mov	rax, QWORD PTR [rbp-16]
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE806:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE14_M_lower_boundEPSt13_Rb_tree_nodeIS2_ESB_RS1_, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE14_M_lower_boundEPSt13_Rb_tree_nodeIS2_ESB_RS1_
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_S_keyEPKSt18_Rb_tree_node_base,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_S_keyEPKSt18_Rb_tree_node_base,comdat
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_S_keyEPKSt18_Rb_tree_node_base
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_S_keyEPKSt18_Rb_tree_node_base, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_S_keyEPKSt18_Rb_tree_node_base:
+.LFB807:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 32
+	mov	QWORD PTR [rbp-24], rdi
+	mov	rax, QWORD PTR [rbp-24]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_valueEPKSt18_Rb_tree_node_base
+	mov	rdx, rax
+	lea	rax, [rbp-1]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNKSt10_Select1stISt4pairIKilEEclERKS2_
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE807:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_S_keyEPKSt18_Rb_tree_node_base, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_S_keyEPKSt18_Rb_tree_node_base
+	.section	.text._ZNSt17_Rb_tree_iteratorISt4pairIKilEEC2EPSt13_Rb_tree_nodeIS2_E,"axG",@progbits,_ZNSt17_Rb_tree_iteratorISt4pairIKilEEC5EPSt13_Rb_tree_nodeIS2_E,comdat
+	.align 2
+	.weak	_ZNSt17_Rb_tree_iteratorISt4pairIKilEEC2EPSt13_Rb_tree_nodeIS2_E
+	.type	_ZNSt17_Rb_tree_iteratorISt4pairIKilEEC2EPSt13_Rb_tree_nodeIS2_E, @function
+_ZNSt17_Rb_tree_iteratorISt4pairIKilEEC2EPSt13_Rb_tree_nodeIS2_E:
+.LFB809:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	QWORD PTR [rbp-16], rsi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rdx, QWORD PTR [rbp-16]
+	mov	QWORD PTR [rax], rdx
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE809:
+	.size	_ZNSt17_Rb_tree_iteratorISt4pairIKilEEC2EPSt13_Rb_tree_nodeIS2_E, .-_ZNSt17_Rb_tree_iteratorISt4pairIKilEEC2EPSt13_Rb_tree_nodeIS2_E
+	.weak	_ZNSt17_Rb_tree_iteratorISt4pairIKilEEC1EPSt13_Rb_tree_nodeIS2_E
+	.set	_ZNSt17_Rb_tree_iteratorISt4pairIKilEEC1EPSt13_Rb_tree_nodeIS2_E,_ZNSt17_Rb_tree_iteratorISt4pairIKilEEC2EPSt13_Rb_tree_nodeIS2_E
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11lower_boundERS1_,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11lower_boundERS1_,comdat
+	.align 2
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11lower_boundERS1_
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11lower_boundERS1_, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11lower_boundERS1_:
+.LFB811:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	push	rbx
+	sub	rsp, 24
+	.cfi_offset 3, -24
+	mov	QWORD PTR [rbp-24], rdi
+	mov	QWORD PTR [rbp-32], rsi
+	mov	rax, QWORD PTR [rbp-24]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_M_endEv
+	mov	rbx, rax
+	mov	rax, QWORD PTR [rbp-24]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_beginEv
+	mov	rsi, rax
+	mov	rdx, QWORD PTR [rbp-32]
+	mov	rax, QWORD PTR [rbp-24]
+	mov	rcx, rdx
+	mov	rdx, rbx
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE14_M_lower_boundEPSt13_Rb_tree_nodeIS2_ESB_RS1_
+	add	rsp, 24
+	pop	rbx
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE811:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11lower_boundERS1_, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11lower_boundERS1_
+	.section	.text._ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8key_compEv,"axG",@progbits,_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8key_compEv,comdat
+	.align 2
+	.weak	_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8key_compEv
+	.type	_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8key_compEv, @function
+_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8key_compEv:
+.LFB812:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE812:
+	.size	_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8key_compEv, .-_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8key_compEv
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE17_M_insert_unique_ESt23_Rb_tree_const_iteratorIS2_ERKS2_,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE17_M_insert_unique_ESt23_Rb_tree_const_iteratorIS2_ERKS2_,comdat
+	.align 2
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE17_M_insert_unique_ESt23_Rb_tree_const_iteratorIS2_ERKS2_
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE17_M_insert_unique_ESt23_Rb_tree_const_iteratorIS2_ERKS2_, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE17_M_insert_unique_ESt23_Rb_tree_const_iteratorIS2_ERKS2_:
+.LFB813:
+	.cfi_startproc
+	.cfi_personality 0x3,__gxx_personality_v0
+	.cfi_lsda 0x3,.LLSDA813
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	push	r12
+	push	rbx
+	sub	rsp, 80
+	.cfi_offset 12, -24
+	.cfi_offset 3, -32
+	mov	QWORD PTR [rbp-56], rdi
+	mov	QWORD PTR [rbp-64], rsi
+	mov	QWORD PTR [rbp-72], rdx
+	mov	rbx, QWORD PTR [rbp-64]
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_M_endEv
+	cmp	rbx, rax
+	sete	al
+	test	al, al
+	je	.L144
+	mov	ebx, 0
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rdi, rax
+	call	_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE4sizeEv
+	test	rax, rax
+	je	.L145
+	mov	ebx, 1
+	mov	rdx, QWORD PTR [rbp-72]
+	lea	rax, [rbp-48]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNKSt10_Select1stISt4pairIKilEEclERKS2_
+	mov	r12, rax
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE12_M_rightmostEv
+	mov	rax, QWORD PTR [rax]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_S_keyEPKSt18_Rb_tree_node_base
+	mov	rcx, rax
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rdx, r12
+	mov	rsi, rcx
+	mov	rdi, rax
+	call	_ZNKSt4lessIiEclERKiS2_
+	test	al, al
+	je	.L145
+	mov	eax, 1
+	jmp	.L146
+.L145:
+	mov	eax, 0
+.L146:
+	test	bl, bl
+	test	al, al
+	je	.L148
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE12_M_rightmostEv
+	mov	rdx, QWORD PTR [rax]
+	mov	rcx, QWORD PTR [rbp-72]
+	mov	rax, QWORD PTR [rbp-56]
+	mov	esi, 0
+	mov	rdi, rax
+.LEHB16:
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE10_M_insert_EPKSt18_Rb_tree_node_baseSB_RKS2_
+	jmp	.L149
+.L148:
+	mov	rdx, QWORD PTR [rbp-72]
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE16_M_insert_uniqueERKS2_
+.LEHE16:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	QWORD PTR [rbp-96], rcx
+	mov	DWORD PTR [rbp-88], eax
+	mov	rax, QWORD PTR [rbp-96]
+	mov	QWORD PTR [rbp-32], rax
+	mov	rax, QWORD PTR [rbp-88]
+	mov	QWORD PTR [rbp-24], rax
+	mov	rax, QWORD PTR [rbp-32]
+	jmp	.L149
+.L144:
+	mov	rax, QWORD PTR [rbp-64]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_S_keyEPKSt18_Rb_tree_node_base
+	mov	rbx, rax
+	mov	rdx, QWORD PTR [rbp-72]
+	lea	rax, [rbp-32]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNKSt10_Select1stISt4pairIKilEEclERKS2_
+	mov	rcx, rax
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rdx, rbx
+	mov	rsi, rcx
+	mov	rdi, rax
+	call	_ZNKSt4lessIiEclERKiS2_
+	test	al, al
+	je	.L150
+	mov	rax, QWORD PTR [rbp-64]
+	mov	QWORD PTR [rbp-48], rax
+	mov	rbx, QWORD PTR [rbp-64]
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_leftmostEv
+	mov	rax, QWORD PTR [rax]
+	cmp	rbx, rax
+	sete	al
+	test	al, al
+	je	.L151
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_leftmostEv
+	mov	rbx, QWORD PTR [rax]
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_leftmostEv
+	mov	rsi, QWORD PTR [rax]
+	mov	rdx, QWORD PTR [rbp-72]
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rcx, rdx
+	mov	rdx, rbx
+	mov	rdi, rax
+.LEHB17:
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE10_M_insert_EPKSt18_Rb_tree_node_baseSB_RKS2_
+	jmp	.L149
+.L151:
+	mov	rdx, QWORD PTR [rbp-72]
+	lea	rax, [rbp-32]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNKSt10_Select1stISt4pairIKilEEclERKS2_
+	mov	rbx, rax
+	lea	rax, [rbp-48]
+	mov	rdi, rax
+	call	_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEmmEv
+	mov	rax, QWORD PTR [rax]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_S_keyEPKSt18_Rb_tree_node_base
+	mov	rcx, rax
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rdx, rbx
+	mov	rsi, rcx
+	mov	rdi, rax
+	call	_ZNKSt4lessIiEclERKiS2_
+	test	al, al
+	je	.L153
+	mov	rax, QWORD PTR [rbp-48]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_rightEPKSt18_Rb_tree_node_base
+	test	rax, rax
+	sete	al
+	test	al, al
+	je	.L154
+	mov	rdx, QWORD PTR [rbp-48]
+	mov	rcx, QWORD PTR [rbp-72]
+	mov	rax, QWORD PTR [rbp-56]
+	mov	esi, 0
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE10_M_insert_EPKSt18_Rb_tree_node_baseSB_RKS2_
+	jmp	.L149
+.L154:
+	mov	rdx, QWORD PTR [rbp-64]
+	mov	rsi, QWORD PTR [rbp-64]
+	mov	rcx, QWORD PTR [rbp-72]
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE10_M_insert_EPKSt18_Rb_tree_node_baseSB_RKS2_
+	jmp	.L149
+.L153:
+	mov	rdx, QWORD PTR [rbp-72]
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE16_M_insert_uniqueERKS2_
+.LEHE17:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	QWORD PTR [rbp-96], rcx
+	mov	DWORD PTR [rbp-88], eax
+	mov	rax, QWORD PTR [rbp-96]
+	mov	QWORD PTR [rbp-32], rax
+	mov	rax, QWORD PTR [rbp-88]
+	mov	QWORD PTR [rbp-24], rax
+	mov	rax, QWORD PTR [rbp-32]
+	jmp	.L149
+.L150:
+	mov	rdx, QWORD PTR [rbp-72]
+	lea	rax, [rbp-32]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNKSt10_Select1stISt4pairIKilEEclERKS2_
+	mov	rbx, rax
+	mov	rax, QWORD PTR [rbp-64]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_S_keyEPKSt18_Rb_tree_node_base
+	mov	rcx, rax
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rdx, rbx
+	mov	rsi, rcx
+	mov	rdi, rax
+	call	_ZNKSt4lessIiEclERKiS2_
+	test	al, al
+	je	.L155
+	mov	rax, QWORD PTR [rbp-64]
+	mov	QWORD PTR [rbp-48], rax
+	mov	rbx, QWORD PTR [rbp-64]
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE12_M_rightmostEv
+	mov	rax, QWORD PTR [rax]
+	cmp	rbx, rax
+	sete	al
+	test	al, al
+	je	.L156
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE12_M_rightmostEv
+	mov	rdx, QWORD PTR [rax]
+	mov	rcx, QWORD PTR [rbp-72]
+	mov	rax, QWORD PTR [rbp-56]
+	mov	esi, 0
+	mov	rdi, rax
+.LEHB18:
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE10_M_insert_EPKSt18_Rb_tree_node_baseSB_RKS2_
+	jmp	.L149
+.L156:
+	lea	rax, [rbp-48]
+	mov	rdi, rax
+	call	_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEppEv
+	mov	rax, QWORD PTR [rax]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_S_keyEPKSt18_Rb_tree_node_base
+	mov	rbx, rax
+	mov	rdx, QWORD PTR [rbp-72]
+	lea	rax, [rbp-32]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNKSt10_Select1stISt4pairIKilEEclERKS2_
+	mov	rcx, rax
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rdx, rbx
+	mov	rsi, rcx
+	mov	rdi, rax
+	call	_ZNKSt4lessIiEclERKiS2_
+	test	al, al
+	je	.L158
+	mov	rax, QWORD PTR [rbp-64]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_rightEPKSt18_Rb_tree_node_base
+	test	rax, rax
+	sete	al
+	test	al, al
+	je	.L159
+	mov	rdx, QWORD PTR [rbp-64]
+	mov	rcx, QWORD PTR [rbp-72]
+	mov	rax, QWORD PTR [rbp-56]
+	mov	esi, 0
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE10_M_insert_EPKSt18_Rb_tree_node_baseSB_RKS2_
+	jmp	.L149
+.L159:
+	mov	rdx, QWORD PTR [rbp-48]
+	mov	rsi, QWORD PTR [rbp-48]
+	mov	rcx, QWORD PTR [rbp-72]
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE10_M_insert_EPKSt18_Rb_tree_node_baseSB_RKS2_
+	jmp	.L149
+.L158:
+	mov	rdx, QWORD PTR [rbp-72]
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE16_M_insert_uniqueERKS2_
+.LEHE18:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	QWORD PTR [rbp-96], rcx
+	mov	DWORD PTR [rbp-88], eax
+	mov	rax, QWORD PTR [rbp-96]
+	mov	QWORD PTR [rbp-32], rax
+	mov	rax, QWORD PTR [rbp-88]
+	mov	QWORD PTR [rbp-24], rax
+	mov	rax, QWORD PTR [rbp-32]
+	jmp	.L149
+.L155:
+	lea	rax, [rbp-64]
+	mov	rdi, rax
+	call	_ZNKSt23_Rb_tree_const_iteratorISt4pairIKilEE13_M_const_castEv
+.L149:
+	jmp	.L164
+.L162:
+	mov	rdi, rax
+.LEHB19:
+	call	_Unwind_Resume
+.L163:
+	mov	rdi, rax
+	call	_Unwind_Resume
+.LEHE19:
+.L164:
+	add	rsp, 80
+	pop	rbx
+	pop	r12
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE813:
+	.section	.gcc_except_table
+.LLSDA813:
+	.byte	0xff
+	.byte	0xff
+	.byte	0x1
+	.uleb128 .LLSDACSE813-.LLSDACSB813
+.LLSDACSB813:
+	.uleb128 .LEHB16-.LFB813
+	.uleb128 .LEHE16-.LEHB16
+	.uleb128 0
+	.uleb128 0
+	.uleb128 .LEHB17-.LFB813
+	.uleb128 .LEHE17-.LEHB17
+	.uleb128 .L162-.LFB813
+	.uleb128 0
+	.uleb128 .LEHB18-.LFB813
+	.uleb128 .LEHE18-.LEHB18
+	.uleb128 .L163-.LFB813
+	.uleb128 0
+	.uleb128 .LEHB19-.LFB813
+	.uleb128 .LEHE19-.LEHB19
+	.uleb128 0
+	.uleb128 0
+.LLSDACSE813:
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE17_M_insert_unique_ESt23_Rb_tree_const_iteratorIS2_ERKS2_,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE17_M_insert_unique_ESt23_Rb_tree_const_iteratorIS2_ERKS2_,comdat
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE17_M_insert_unique_ESt23_Rb_tree_const_iteratorIS2_ERKS2_, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE17_M_insert_unique_ESt23_Rb_tree_const_iteratorIS2_ERKS2_
+	.section	.text._ZNSaISt13_Rb_tree_nodeISt4pairIKilEEEC2Ev,"axG",@progbits,_ZNSaISt13_Rb_tree_nodeISt4pairIKilEEEC5Ev,comdat
+	.align 2
+	.weak	_ZNSaISt13_Rb_tree_nodeISt4pairIKilEEEC2Ev
+	.type	_ZNSaISt13_Rb_tree_nodeISt4pairIKilEEEC2Ev, @function
+_ZNSaISt13_Rb_tree_nodeISt4pairIKilEEEC2Ev:
+.LFB815:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 16
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rdi, rax
+	call	_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEEC2Ev
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE815:
+	.size	_ZNSaISt13_Rb_tree_nodeISt4pairIKilEEEC2Ev, .-_ZNSaISt13_Rb_tree_nodeISt4pairIKilEEEC2Ev
+	.weak	_ZNSaISt13_Rb_tree_nodeISt4pairIKilEEEC1Ev
+	.set	_ZNSaISt13_Rb_tree_nodeISt4pairIKilEEEC1Ev,_ZNSaISt13_Rb_tree_nodeISt4pairIKilEEEC2Ev
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EE13_M_initializeEv,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EE13_M_initializeEv,comdat
+	.align 2
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EE13_M_initializeEv
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EE13_M_initializeEv, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EE13_M_initializeEv:
+.LFB817:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	DWORD PTR [rax+8], 0
+	mov	rax, QWORD PTR [rbp-8]
+	mov	QWORD PTR [rax+16], 0
+	mov	rax, QWORD PTR [rbp-8]
+	lea	rdx, [rax+8]
+	mov	rax, QWORD PTR [rbp-8]
+	mov	QWORD PTR [rax+24], rdx
+	mov	rax, QWORD PTR [rbp-8]
+	lea	rdx, [rax+8]
+	mov	rax, QWORD PTR [rbp-8]
+	mov	QWORD PTR [rax+32], rdx
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE817:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EE13_M_initializeEv, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13_Rb_tree_implIS6_Lb0EE13_M_initializeEv
+	.section	.text._ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13get_allocatorEv,"axG",@progbits,_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13get_allocatorEv,comdat
+	.align 2
+	.weak	_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13get_allocatorEv
+	.type	_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13get_allocatorEv, @function
+_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13get_allocatorEv:
+.LFB818:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 16
+	mov	QWORD PTR [rbp-8], rdi
+	mov	QWORD PTR [rbp-16], rsi
+	mov	rax, QWORD PTR [rbp-16]
+	mov	rdi, rax
+	call	_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE21_M_get_Node_allocatorEv
+	mov	rdx, rax
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNSaISt4pairIKilEEC1ISt13_Rb_tree_nodeIS1_EEERKSaIT_E
+	mov	rax, QWORD PTR [rbp-8]
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE818:
+	.size	_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13get_allocatorEv, .-_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13get_allocatorEv
+	.section	.text._ZNSaISt4pairIKilEED2Ev,"axG",@progbits,_ZNSaISt4pairIKilEED5Ev,comdat
+	.align 2
+	.weak	_ZNSaISt4pairIKilEED2Ev
+	.type	_ZNSaISt4pairIKilEED2Ev, @function
+_ZNSaISt4pairIKilEED2Ev:
+.LFB820:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 16
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rdi, rax
+	call	_ZN9__gnu_cxx13new_allocatorISt4pairIKilEED2Ev
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE820:
+	.size	_ZNSaISt4pairIKilEED2Ev, .-_ZNSaISt4pairIKilEED2Ev
+	.weak	_ZNSaISt4pairIKilEED1Ev
+	.set	_ZNSaISt4pairIKilEED1Ev,_ZNSaISt4pairIKilEED2Ev
+	.section	.text._ZN9__gnu_cxx13new_allocatorISt4pairIKilEE7destroyEPS3_,"axG",@progbits,_ZN9__gnu_cxx13new_allocatorISt4pairIKilEE7destroyEPS3_,comdat
+	.align 2
+	.weak	_ZN9__gnu_cxx13new_allocatorISt4pairIKilEE7destroyEPS3_
+	.type	_ZN9__gnu_cxx13new_allocatorISt4pairIKilEE7destroyEPS3_, @function
+_ZN9__gnu_cxx13new_allocatorISt4pairIKilEE7destroyEPS3_:
+.LFB822:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	QWORD PTR [rbp-16], rsi
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE822:
+	.size	_ZN9__gnu_cxx13new_allocatorISt4pairIKilEE7destroyEPS3_, .-_ZN9__gnu_cxx13new_allocatorISt4pairIKilEE7destroyEPS3_
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_put_nodeEPSt13_Rb_tree_nodeIS2_E,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_put_nodeEPSt13_Rb_tree_nodeIS2_E,comdat
+	.align 2
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_put_nodeEPSt13_Rb_tree_nodeIS2_E
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_put_nodeEPSt13_Rb_tree_nodeIS2_E, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_put_nodeEPSt13_Rb_tree_nodeIS2_E:
+.LFB823:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 16
+	mov	QWORD PTR [rbp-8], rdi
+	mov	QWORD PTR [rbp-16], rsi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rcx, QWORD PTR [rbp-16]
+	mov	edx, 1
+	mov	rsi, rcx
+	mov	rdi, rax
+	call	_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEE10deallocateEPS5_m
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE823:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_put_nodeEPSt13_Rb_tree_nodeIS2_E, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_put_nodeEPSt13_Rb_tree_nodeIS2_E
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_S_keyEPKSt13_Rb_tree_nodeIS2_E,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_S_keyEPKSt13_Rb_tree_nodeIS2_E,comdat
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_S_keyEPKSt13_Rb_tree_nodeIS2_E
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_S_keyEPKSt13_Rb_tree_nodeIS2_E, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_S_keyEPKSt13_Rb_tree_nodeIS2_E:
+.LFB824:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 32
+	mov	QWORD PTR [rbp-24], rdi
+	mov	rax, QWORD PTR [rbp-24]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_valueEPKSt13_Rb_tree_nodeIS2_E
+	mov	rdx, rax
+	lea	rax, [rbp-1]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNKSt10_Select1stISt4pairIKilEEclERKS2_
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE824:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_S_keyEPKSt13_Rb_tree_nodeIS2_E, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_S_keyEPKSt13_Rb_tree_nodeIS2_E
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_valueEPKSt18_Rb_tree_node_base,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_valueEPKSt18_Rb_tree_node_base,comdat
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_valueEPKSt18_Rb_tree_node_base
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_valueEPKSt18_Rb_tree_node_base, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_valueEPKSt18_Rb_tree_node_base:
+.LFB825:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	add	rax, 32
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE825:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_valueEPKSt18_Rb_tree_node_base, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_valueEPKSt18_Rb_tree_node_base
+	.section	.text._ZNKSt10_Select1stISt4pairIKilEEclERKS2_,"axG",@progbits,_ZNKSt10_Select1stISt4pairIKilEEclERKS2_,comdat
+	.align 2
+	.weak	_ZNKSt10_Select1stISt4pairIKilEEclERKS2_
+	.type	_ZNKSt10_Select1stISt4pairIKilEEclERKS2_, @function
+_ZNKSt10_Select1stISt4pairIKilEEclERKS2_:
+.LFB826:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	QWORD PTR [rbp-16], rsi
+	mov	rax, QWORD PTR [rbp-16]
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE826:
+	.size	_ZNKSt10_Select1stISt4pairIKilEEclERKS2_, .-_ZNKSt10_Select1stISt4pairIKilEEclERKS2_
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE12_M_rightmostEv,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE12_M_rightmostEv,comdat
+	.align 2
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE12_M_rightmostEv
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE12_M_rightmostEv, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE12_M_rightmostEv:
+.LFB827:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	add	rax, 32
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE827:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE12_M_rightmostEv, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE12_M_rightmostEv
+	.section	.text._ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE4sizeEv,"axG",@progbits,_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE4sizeEv,comdat
+	.align 2
+	.weak	_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE4sizeEv
+	.type	_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE4sizeEv, @function
+_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE4sizeEv:
+.LFB828:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rax, QWORD PTR [rax+40]
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE828:
+	.size	_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE4sizeEv, .-_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE4sizeEv
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE10_M_insert_EPKSt18_Rb_tree_node_baseSB_RKS2_,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE10_M_insert_EPKSt18_Rb_tree_node_baseSB_RKS2_,comdat
+	.align 2
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE10_M_insert_EPKSt18_Rb_tree_node_baseSB_RKS2_
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE10_M_insert_EPKSt18_Rb_tree_node_baseSB_RKS2_, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE10_M_insert_EPKSt18_Rb_tree_node_baseSB_RKS2_:
+.LFB829:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	push	r12
+	push	rbx
+	sub	rsp, 64
+	.cfi_offset 12, -24
+	.cfi_offset 3, -32
+	mov	QWORD PTR [rbp-56], rdi
+	mov	QWORD PTR [rbp-64], rsi
+	mov	QWORD PTR [rbp-72], rdx
+	mov	QWORD PTR [rbp-80], rcx
+	mov	ebx, 0
+	cmp	QWORD PTR [rbp-64], 0
+	jne	.L184
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_M_endEv
+	cmp	rax, QWORD PTR [rbp-72]
+	je	.L184
+	mov	rax, QWORD PTR [rbp-72]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_S_keyEPKSt18_Rb_tree_node_base
+	mov	r12, rax
+	mov	ebx, 1
+	mov	rdx, QWORD PTR [rbp-80]
+	lea	rax, [rbp-34]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNKSt10_Select1stISt4pairIKilEEclERKS2_
+	mov	rcx, rax
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rdx, r12
+	mov	rsi, rcx
+	mov	rdi, rax
+	call	_ZNKSt4lessIiEclERKiS2_
+	test	al, al
+	je	.L185
+.L184:
+	mov	eax, 1
+	jmp	.L186
+.L185:
+	mov	eax, 0
+.L186:
+	mov	BYTE PTR [rbp-33], al
+	test	bl, bl
+	mov	rdx, QWORD PTR [rbp-80]
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE14_M_create_nodeERKS2_
+	mov	QWORD PTR [rbp-24], rax
+	mov	rax, QWORD PTR [rbp-56]
+	lea	rcx, [rax+8]
+	movzx	eax, BYTE PTR [rbp-33]
+	mov	rdx, QWORD PTR [rbp-72]
+	mov	rsi, QWORD PTR [rbp-24]
+	mov	edi, eax
+	call	_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_
+	mov	rax, QWORD PTR [rbp-56]
+	mov	rax, QWORD PTR [rax+40]
+	lea	rdx, [rax+1]
+	mov	rax, QWORD PTR [rbp-56]
+	mov	QWORD PTR [rax+40], rdx
+	mov	rdx, QWORD PTR [rbp-24]
+	lea	rax, [rbp-32]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNSt17_Rb_tree_iteratorISt4pairIKilEEC1EPSt13_Rb_tree_nodeIS2_E
+	mov	rax, QWORD PTR [rbp-32]
+	add	rsp, 64
+	pop	rbx
+	pop	r12
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE829:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE10_M_insert_EPKSt18_Rb_tree_node_baseSB_RKS2_, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE10_M_insert_EPKSt18_Rb_tree_node_baseSB_RKS2_
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE16_M_insert_uniqueERKS2_,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE16_M_insert_uniqueERKS2_,comdat
+	.align 2
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE16_M_insert_uniqueERKS2_
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE16_M_insert_uniqueERKS2_, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE16_M_insert_uniqueERKS2_:
+.LFB830:
+	.cfi_startproc
+	.cfi_personality 0x3,__gxx_personality_v0
+	.cfi_lsda 0x3,.LLSDA830
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	push	rbx
+	sub	rsp, 152
+	.cfi_offset 3, -24
+	mov	QWORD PTR [rbp-136], rdi
+	mov	QWORD PTR [rbp-144], rsi
+	mov	rax, QWORD PTR [rbp-136]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_M_beginEv
+	mov	QWORD PTR [rbp-64], rax
+	mov	rax, QWORD PTR [rbp-136]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_M_endEv
+	mov	QWORD PTR [rbp-56], rax
+	mov	BYTE PTR [rbp-113], 1
+	jmp	.L190
+.L193:
+	mov	rax, QWORD PTR [rbp-64]
+	mov	QWORD PTR [rbp-56], rax
+	mov	rax, QWORD PTR [rbp-64]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_S_keyEPKSt13_Rb_tree_nodeIS2_E
+	mov	rbx, rax
+	mov	rdx, QWORD PTR [rbp-144]
+	lea	rax, [rbp-32]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNKSt10_Select1stISt4pairIKilEEclERKS2_
+	mov	rcx, rax
+	mov	rax, QWORD PTR [rbp-136]
+	mov	rdx, rbx
+	mov	rsi, rcx
+	mov	rdi, rax
+	call	_ZNKSt4lessIiEclERKiS2_
+	mov	BYTE PTR [rbp-113], al
+	cmp	BYTE PTR [rbp-113], 0
+	je	.L191
+	mov	rax, QWORD PTR [rbp-64]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE7_S_leftEPSt18_Rb_tree_node_base
+	jmp	.L192
+.L191:
+	mov	rax, QWORD PTR [rbp-64]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_rightEPSt18_Rb_tree_node_base
+.L192:
+	mov	QWORD PTR [rbp-64], rax
+.L190:
+	cmp	QWORD PTR [rbp-64], 0
+	setne	al
+	test	al, al
+	jne	.L193
+	mov	rdx, QWORD PTR [rbp-56]
+	lea	rax, [rbp-112]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNSt17_Rb_tree_iteratorISt4pairIKilEEC1EPSt13_Rb_tree_nodeIS2_E
+	cmp	BYTE PTR [rbp-113], 0
+	je	.L194
+	mov	rax, QWORD PTR [rbp-136]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE5beginEv
+	mov	QWORD PTR [rbp-32], rax
+	lea	rdx, [rbp-32]
+	lea	rax, [rbp-112]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNKSt17_Rb_tree_iteratorISt4pairIKilEEeqERKS3_
+	test	al, al
+	je	.L195
+	mov	BYTE PTR [rbp-115], 1
+	mov	rcx, QWORD PTR [rbp-144]
+	mov	rdx, QWORD PTR [rbp-56]
+	mov	rsi, QWORD PTR [rbp-64]
+	mov	rax, QWORD PTR [rbp-136]
+	mov	rdi, rax
+.LEHB20:
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE10_M_insert_EPKSt18_Rb_tree_node_baseSB_RKS2_
+.LEHE20:
+	mov	QWORD PTR [rbp-96], rax
+	lea	rdx, [rbp-115]
+	lea	rcx, [rbp-96]
+	lea	rax, [rbp-48]
+	mov	rsi, rcx
+	mov	rdi, rax
+	call	_ZNSt4pairISt17_Rb_tree_iteratorIS_IKilEEbEC1ERKS3_RKb
+	mov	rax, QWORD PTR [rbp-48]
+	mov	QWORD PTR [rbp-32], rax
+	mov	rax, QWORD PTR [rbp-40]
+	mov	QWORD PTR [rbp-24], rax
+	jmp	.L198
+.L195:
+	lea	rax, [rbp-112]
+	mov	rdi, rax
+	call	_ZNSt17_Rb_tree_iteratorISt4pairIKilEEmmEv
+.L194:
+	mov	rdx, QWORD PTR [rbp-144]
+	lea	rax, [rbp-32]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNKSt10_Select1stISt4pairIKilEEclERKS2_
+	mov	rbx, rax
+	mov	rax, QWORD PTR [rbp-112]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE6_S_keyEPKSt18_Rb_tree_node_base
+	mov	rcx, rax
+	mov	rax, QWORD PTR [rbp-136]
+	mov	rdx, rbx
+	mov	rsi, rcx
+	mov	rdi, rax
+	call	_ZNKSt4lessIiEclERKiS2_
+	test	al, al
+	je	.L197
+	mov	BYTE PTR [rbp-114], 1
+	mov	rcx, QWORD PTR [rbp-144]
+	mov	rdx, QWORD PTR [rbp-56]
+	mov	rsi, QWORD PTR [rbp-64]
+	mov	rax, QWORD PTR [rbp-136]
+	mov	rdi, rax
+.LEHB21:
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE10_M_insert_EPKSt18_Rb_tree_node_baseSB_RKS2_
+.LEHE21:
+	mov	QWORD PTR [rbp-80], rax
+	lea	rdx, [rbp-114]
+	lea	rcx, [rbp-80]
+	lea	rax, [rbp-48]
+	mov	rsi, rcx
+	mov	rdi, rax
+	call	_ZNSt4pairISt17_Rb_tree_iteratorIS_IKilEEbEC1ERKS3_RKb
+	mov	rax, QWORD PTR [rbp-48]
+	mov	QWORD PTR [rbp-32], rax
+	mov	rax, QWORD PTR [rbp-40]
+	mov	QWORD PTR [rbp-24], rax
+	jmp	.L198
+.L197:
+	mov	BYTE PTR [rbp-114], 0
+	lea	rdx, [rbp-114]
+	lea	rcx, [rbp-112]
+	lea	rax, [rbp-48]
+	mov	rsi, rcx
+	mov	rdi, rax
+	call	_ZNSt4pairISt17_Rb_tree_iteratorIS_IKilEEbEC1ERKS3_RKb
+	mov	rax, QWORD PTR [rbp-48]
+	mov	QWORD PTR [rbp-32], rax
+	mov	rax, QWORD PTR [rbp-40]
+	mov	QWORD PTR [rbp-24], rax
+.L198:
+	mov	rax, QWORD PTR [rbp-32]
+	mov	edx, DWORD PTR [rbp-24]
+	jmp	.L204
+.L202:
+	jmp	.L200
+.L203:
+.L200:
+	mov	rdi, rax
+.LEHB22:
+	call	_Unwind_Resume
+.LEHE22:
+.L204:
+	add	rsp, 152
+	pop	rbx
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE830:
+	.section	.gcc_except_table
+.LLSDA830:
+	.byte	0xff
+	.byte	0xff
+	.byte	0x1
+	.uleb128 .LLSDACSE830-.LLSDACSB830
+.LLSDACSB830:
+	.uleb128 .LEHB20-.LFB830
+	.uleb128 .LEHE20-.LEHB20
+	.uleb128 .L202-.LFB830
+	.uleb128 0
+	.uleb128 .LEHB21-.LFB830
+	.uleb128 .LEHE21-.LEHB21
+	.uleb128 .L203-.LFB830
+	.uleb128 0
+	.uleb128 .LEHB22-.LFB830
+	.uleb128 .LEHE22-.LEHB22
+	.uleb128 0
+	.uleb128 0
+.LLSDACSE830:
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE16_M_insert_uniqueERKS2_,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE16_M_insert_uniqueERKS2_,comdat
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE16_M_insert_uniqueERKS2_, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE16_M_insert_uniqueERKS2_
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_leftmostEv,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_leftmostEv,comdat
+	.align 2
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_leftmostEv
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_leftmostEv, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_leftmostEv:
+.LFB831:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	add	rax, 24
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE831:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_leftmostEv, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_leftmostEv
+	.section	.text._ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEmmEv,"axG",@progbits,_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEmmEv,comdat
+	.align 2
+	.weak	_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEmmEv
+	.type	_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEmmEv, @function
+_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEmmEv:
+.LFB832:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 16
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rax, QWORD PTR [rax]
+	mov	rdi, rax
+	call	_ZSt18_Rb_tree_decrementPKSt18_Rb_tree_node_base
+	mov	rdx, QWORD PTR [rbp-8]
+	mov	QWORD PTR [rdx], rax
+	mov	rax, QWORD PTR [rbp-8]
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE832:
+	.size	_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEmmEv, .-_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEmmEv
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_rightEPKSt18_Rb_tree_node_base,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_rightEPKSt18_Rb_tree_node_base,comdat
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_rightEPKSt18_Rb_tree_node_base
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_rightEPKSt18_Rb_tree_node_base, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_rightEPKSt18_Rb_tree_node_base:
+.LFB833:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rax, QWORD PTR [rax+24]
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE833:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_rightEPKSt18_Rb_tree_node_base, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_rightEPKSt18_Rb_tree_node_base
+	.section	.text._ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEppEv,"axG",@progbits,_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEppEv,comdat
+	.align 2
+	.weak	_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEppEv
+	.type	_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEppEv, @function
+_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEppEv:
+.LFB834:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 16
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rax, QWORD PTR [rax]
+	mov	rdi, rax
+	call	_ZSt18_Rb_tree_incrementPKSt18_Rb_tree_node_base
+	mov	rdx, QWORD PTR [rbp-8]
+	mov	QWORD PTR [rdx], rax
+	mov	rax, QWORD PTR [rbp-8]
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE834:
+	.size	_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEppEv, .-_ZNSt23_Rb_tree_const_iteratorISt4pairIKilEEppEv
+	.section	.text._ZNKSt23_Rb_tree_const_iteratorISt4pairIKilEE13_M_const_castEv,"axG",@progbits,_ZNKSt23_Rb_tree_const_iteratorISt4pairIKilEE13_M_const_castEv,comdat
+	.align 2
+	.weak	_ZNKSt23_Rb_tree_const_iteratorISt4pairIKilEE13_M_const_castEv
+	.type	_ZNKSt23_Rb_tree_const_iteratorISt4pairIKilEE13_M_const_castEv, @function
+_ZNKSt23_Rb_tree_const_iteratorISt4pairIKilEE13_M_const_castEv:
+.LFB835:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 32
+	mov	QWORD PTR [rbp-24], rdi
+	mov	rax, QWORD PTR [rbp-24]
+	mov	rdx, QWORD PTR [rax]
+	lea	rax, [rbp-16]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNSt17_Rb_tree_iteratorISt4pairIKilEEC1EPSt13_Rb_tree_nodeIS2_E
+	mov	rax, QWORD PTR [rbp-16]
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE835:
+	.size	_ZNKSt23_Rb_tree_const_iteratorISt4pairIKilEE13_M_const_castEv, .-_ZNKSt23_Rb_tree_const_iteratorISt4pairIKilEE13_M_const_castEv
+	.section	.text._ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEEC2Ev,"axG",@progbits,_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEEC5Ev,comdat
+	.align 2
+	.weak	_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEEC2Ev
+	.type	_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEEC2Ev, @function
+_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEEC2Ev:
+.LFB837:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE837:
+	.size	_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEEC2Ev, .-_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEEC2Ev
+	.weak	_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEEC1Ev
+	.set	_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEEC1Ev,_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEEC2Ev
+	.section	.text._ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE21_M_get_Node_allocatorEv,"axG",@progbits,_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE21_M_get_Node_allocatorEv,comdat
+	.align 2
+	.weak	_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE21_M_get_Node_allocatorEv
+	.type	_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE21_M_get_Node_allocatorEv, @function
+_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE21_M_get_Node_allocatorEv:
+.LFB839:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE839:
+	.size	_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE21_M_get_Node_allocatorEv, .-_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE21_M_get_Node_allocatorEv
+	.section	.text._ZNSaISt4pairIKilEEC2ISt13_Rb_tree_nodeIS1_EEERKSaIT_E,"axG",@progbits,_ZNSaISt4pairIKilEEC5ISt13_Rb_tree_nodeIS1_EEERKSaIT_E,comdat
+	.align 2
+	.weak	_ZNSaISt4pairIKilEEC2ISt13_Rb_tree_nodeIS1_EEERKSaIT_E
+	.type	_ZNSaISt4pairIKilEEC2ISt13_Rb_tree_nodeIS1_EEERKSaIT_E, @function
+_ZNSaISt4pairIKilEEC2ISt13_Rb_tree_nodeIS1_EEERKSaIT_E:
+.LFB841:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 16
+	mov	QWORD PTR [rbp-8], rdi
+	mov	QWORD PTR [rbp-16], rsi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rdi, rax
+	call	_ZN9__gnu_cxx13new_allocatorISt4pairIKilEEC2Ev
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE841:
+	.size	_ZNSaISt4pairIKilEEC2ISt13_Rb_tree_nodeIS1_EEERKSaIT_E, .-_ZNSaISt4pairIKilEEC2ISt13_Rb_tree_nodeIS1_EEERKSaIT_E
+	.weak	_ZNSaISt4pairIKilEEC1ISt13_Rb_tree_nodeIS1_EEERKSaIT_E
+	.set	_ZNSaISt4pairIKilEEC1ISt13_Rb_tree_nodeIS1_EEERKSaIT_E,_ZNSaISt4pairIKilEEC2ISt13_Rb_tree_nodeIS1_EEERKSaIT_E
+	.section	.text._ZN9__gnu_cxx13new_allocatorISt4pairIKilEED2Ev,"axG",@progbits,_ZN9__gnu_cxx13new_allocatorISt4pairIKilEED5Ev,comdat
+	.align 2
+	.weak	_ZN9__gnu_cxx13new_allocatorISt4pairIKilEED2Ev
+	.type	_ZN9__gnu_cxx13new_allocatorISt4pairIKilEED2Ev, @function
+_ZN9__gnu_cxx13new_allocatorISt4pairIKilEED2Ev:
+.LFB847:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE847:
+	.size	_ZN9__gnu_cxx13new_allocatorISt4pairIKilEED2Ev, .-_ZN9__gnu_cxx13new_allocatorISt4pairIKilEED2Ev
+	.weak	_ZN9__gnu_cxx13new_allocatorISt4pairIKilEED1Ev
+	.set	_ZN9__gnu_cxx13new_allocatorISt4pairIKilEED1Ev,_ZN9__gnu_cxx13new_allocatorISt4pairIKilEED2Ev
+	.section	.text._ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEE10deallocateEPS5_m,"axG",@progbits,_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEE10deallocateEPS5_m,comdat
+	.align 2
+	.weak	_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEE10deallocateEPS5_m
+	.type	_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEE10deallocateEPS5_m, @function
+_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEE10deallocateEPS5_m:
+.LFB849:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 32
+	mov	QWORD PTR [rbp-8], rdi
+	mov	QWORD PTR [rbp-16], rsi
+	mov	QWORD PTR [rbp-24], rdx
+	mov	rax, QWORD PTR [rbp-16]
+	mov	rdi, rax
+	call	_ZdlPv
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE849:
+	.size	_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEE10deallocateEPS5_m, .-_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEE10deallocateEPS5_m
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_valueEPKSt13_Rb_tree_nodeIS2_E,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_valueEPKSt13_Rb_tree_nodeIS2_E,comdat
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_valueEPKSt13_Rb_tree_nodeIS2_E
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_valueEPKSt13_Rb_tree_nodeIS2_E, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_valueEPKSt13_Rb_tree_nodeIS2_E:
+.LFB850:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	add	rax, 32
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE850:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_valueEPKSt13_Rb_tree_nodeIS2_E, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE8_S_valueEPKSt13_Rb_tree_nodeIS2_E
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE14_M_create_nodeERKS2_,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE14_M_create_nodeERKS2_,comdat
+	.align 2
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE14_M_create_nodeERKS2_
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE14_M_create_nodeERKS2_, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE14_M_create_nodeERKS2_:
+.LFB851:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	push	rbx
+	sub	rsp, 40
+	.cfi_offset 3, -24
+	mov	QWORD PTR [rbp-40], rdi
+	mov	QWORD PTR [rbp-48], rsi
+	mov	rax, QWORD PTR [rbp-40]
+	mov	rdi, rax
+	call	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_get_nodeEv
+	mov	QWORD PTR [rbp-24], rax
+	mov	rax, QWORD PTR [rbp-24]
+	add	rax, 32
+	mov	rdi, rax
+	call	_ZSt11__addressofISt4pairIKilEEPT_RS3_
+	mov	rbx, rax
+	lea	rax, [rbp-25]
+	mov	rdx, QWORD PTR [rbp-40]
+	mov	rsi, rdx
+	mov	rdi, rax
+	call	_ZNKSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE13get_allocatorEv
+	mov	rdx, QWORD PTR [rbp-48]
+	lea	rax, [rbp-25]
+	mov	rsi, rbx
+	mov	rdi, rax
+	call	_ZN9__gnu_cxx13new_allocatorISt4pairIKilEE9constructEPS3_RKS3_
+	lea	rax, [rbp-25]
+	mov	rdi, rax
+	call	_ZNSaISt4pairIKilEED1Ev
+	mov	rax, QWORD PTR [rbp-24]
+	add	rsp, 40
+	pop	rbx
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE851:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE14_M_create_nodeERKS2_, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE14_M_create_nodeERKS2_
+	.section	.text._ZNSt4pairISt17_Rb_tree_iteratorIS_IKilEEbEC2ERKS3_RKb,"axG",@progbits,_ZNSt4pairISt17_Rb_tree_iteratorIS_IKilEEbEC5ERKS3_RKb,comdat
+	.align 2
+	.weak	_ZNSt4pairISt17_Rb_tree_iteratorIS_IKilEEbEC2ERKS3_RKb
+	.type	_ZNSt4pairISt17_Rb_tree_iteratorIS_IKilEEbEC2ERKS3_RKb, @function
+_ZNSt4pairISt17_Rb_tree_iteratorIS_IKilEEbEC2ERKS3_RKb:
+.LFB853:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	mov	QWORD PTR [rbp-16], rsi
+	mov	QWORD PTR [rbp-24], rdx
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rdx, QWORD PTR [rbp-16]
+	mov	rdx, QWORD PTR [rdx]
+	mov	QWORD PTR [rax], rdx
+	mov	rax, QWORD PTR [rbp-24]
+	movzx	edx, BYTE PTR [rax]
+	mov	rax, QWORD PTR [rbp-8]
+	mov	BYTE PTR [rax+8], dl
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE853:
+	.size	_ZNSt4pairISt17_Rb_tree_iteratorIS_IKilEEbEC2ERKS3_RKb, .-_ZNSt4pairISt17_Rb_tree_iteratorIS_IKilEEbEC2ERKS3_RKb
+	.weak	_ZNSt4pairISt17_Rb_tree_iteratorIS_IKilEEbEC1ERKS3_RKb
+	.set	_ZNSt4pairISt17_Rb_tree_iteratorIS_IKilEEbEC1ERKS3_RKb,_ZNSt4pairISt17_Rb_tree_iteratorIS_IKilEEbEC2ERKS3_RKb
+	.section	.text._ZNSt17_Rb_tree_iteratorISt4pairIKilEEmmEv,"axG",@progbits,_ZNSt17_Rb_tree_iteratorISt4pairIKilEEmmEv,comdat
+	.align 2
+	.weak	_ZNSt17_Rb_tree_iteratorISt4pairIKilEEmmEv
+	.type	_ZNSt17_Rb_tree_iteratorISt4pairIKilEEmmEv, @function
+_ZNSt17_Rb_tree_iteratorISt4pairIKilEEmmEv:
+.LFB855:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 16
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rax, QWORD PTR [rax]
+	mov	rdi, rax
+	call	_ZSt18_Rb_tree_decrementPSt18_Rb_tree_node_base
+	mov	rdx, QWORD PTR [rbp-8]
+	mov	QWORD PTR [rdx], rax
+	mov	rax, QWORD PTR [rbp-8]
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE855:
+	.size	_ZNSt17_Rb_tree_iteratorISt4pairIKilEEmmEv, .-_ZNSt17_Rb_tree_iteratorISt4pairIKilEEmmEv
+	.section	.text._ZN9__gnu_cxx13new_allocatorISt4pairIKilEEC2Ev,"axG",@progbits,_ZN9__gnu_cxx13new_allocatorISt4pairIKilEEC5Ev,comdat
+	.align 2
+	.weak	_ZN9__gnu_cxx13new_allocatorISt4pairIKilEEC2Ev
+	.type	_ZN9__gnu_cxx13new_allocatorISt4pairIKilEEC2Ev, @function
+_ZN9__gnu_cxx13new_allocatorISt4pairIKilEEC2Ev:
+.LFB857:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE857:
+	.size	_ZN9__gnu_cxx13new_allocatorISt4pairIKilEEC2Ev, .-_ZN9__gnu_cxx13new_allocatorISt4pairIKilEEC2Ev
+	.weak	_ZN9__gnu_cxx13new_allocatorISt4pairIKilEEC1Ev
+	.set	_ZN9__gnu_cxx13new_allocatorISt4pairIKilEEC1Ev,_ZN9__gnu_cxx13new_allocatorISt4pairIKilEEC2Ev
+	.section	.text._ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_get_nodeEv,"axG",@progbits,_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_get_nodeEv,comdat
+	.align 2
+	.weak	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_get_nodeEv
+	.type	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_get_nodeEv, @function
+_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_get_nodeEv:
+.LFB862:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 16
+	mov	QWORD PTR [rbp-8], rdi
+	mov	rax, QWORD PTR [rbp-8]
+	mov	edx, 0
+	mov	esi, 1
+	mov	rdi, rax
+	call	_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEE8allocateEmPKv
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE862:
+	.size	_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_get_nodeEv, .-_ZNSt8_Rb_treeIiSt4pairIKilESt10_Select1stIS2_ESt4lessIiESaIS2_EE11_M_get_nodeEv
+	.section	.text._ZN9__gnu_cxx13new_allocatorISt4pairIKilEE9constructEPS3_RKS3_,"axG",@progbits,_ZN9__gnu_cxx13new_allocatorISt4pairIKilEE9constructEPS3_RKS3_,comdat
+	.align 2
+	.weak	_ZN9__gnu_cxx13new_allocatorISt4pairIKilEE9constructEPS3_RKS3_
+	.type	_ZN9__gnu_cxx13new_allocatorISt4pairIKilEE9constructEPS3_RKS3_, @function
+_ZN9__gnu_cxx13new_allocatorISt4pairIKilEE9constructEPS3_RKS3_:
+.LFB863:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 32
+	mov	QWORD PTR [rbp-8], rdi
+	mov	QWORD PTR [rbp-16], rsi
+	mov	QWORD PTR [rbp-24], rdx
+	mov	rax, QWORD PTR [rbp-16]
+	mov	rsi, rax
+	mov	edi, 16
+	call	_ZnwmPv
+	test	rax, rax
+	je	.L232
+	mov	rdx, QWORD PTR [rbp-24]
+	mov	rcx, QWORD PTR [rdx]
+	mov	QWORD PTR [rax], rcx
+	mov	rdx, QWORD PTR [rdx+8]
+	mov	QWORD PTR [rax+8], rdx
+.L232:
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE863:
+	.size	_ZN9__gnu_cxx13new_allocatorISt4pairIKilEE9constructEPS3_RKS3_, .-_ZN9__gnu_cxx13new_allocatorISt4pairIKilEE9constructEPS3_RKS3_
+	.section	.text._ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEE8allocateEmPKv,"axG",@progbits,_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEE8allocateEmPKv,comdat
+	.align 2
+	.weak	_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEE8allocateEmPKv
+	.type	_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEE8allocateEmPKv, @function
+_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEE8allocateEmPKv:
+.LFB864:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	sub	rsp, 32
+	mov	QWORD PTR [rbp-8], rdi
+	mov	QWORD PTR [rbp-16], rsi
+	mov	QWORD PTR [rbp-24], rdx
+	mov	rax, QWORD PTR [rbp-8]
+	mov	rdi, rax
+	call	_ZNK9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEE8max_sizeEv
+	cmp	rax, QWORD PTR [rbp-16]
+	setb	al
+	test	al, al
+	je	.L236
+	call	_ZSt17__throw_bad_allocv
+.L236:
+	mov	rdx, QWORD PTR [rbp-16]
+	mov	rax, rdx
+	add	rax, rax
+	add	rax, rdx
+	sal	rax, 4
+	mov	rdi, rax
+	call	_Znwm
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE864:
+	.size	_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEE8allocateEmPKv, .-_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEE8allocateEmPKv
+	.section	.text._ZNK9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEE8max_sizeEv,"axG",@progbits,_ZNK9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEE8max_sizeEv,comdat
+	.align 2
+	.weak	_ZNK9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEE8max_sizeEv
+	.type	_ZNK9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEE8max_sizeEv, @function
+_ZNK9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEE8max_sizeEv:
+.LFB865:
+	.cfi_startproc
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register 6
+	mov	QWORD PTR [rbp-8], rdi
+	movabs	rax, 384307168202282325
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE865:
+	.size	_ZNK9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEE8max_sizeEv, .-_ZNK9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKilEEE8max_sizeEv
+	.ident	"GCC: (Ubuntu/Linaro 4.7.3-1ubuntu1) 4.7.3"
 	.section	.note.GNU-stack,"",@progbits
